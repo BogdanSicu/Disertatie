@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'dizertatie-frontend'`, () => {
+  it(`should have as title 'disertatie-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('dizertatie-frontend');
+    expect(app.title).toEqual('disertatie-frontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('dizertatie-frontend app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('disertatie-frontend app is running!');
   });
 });

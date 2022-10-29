@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dizertatie-frontend": {
+    "disertatie-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dizertatie-frontend",
+            "outputPath": "dist/disertatie-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dizertatie-frontend:build:production"
+              "browserTarget": "disertatie-frontend:build:production"
             },
             "development": {
-              "browserTarget": "dizertatie-frontend:build:development"
+              "browserTarget": "disertatie-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dizertatie-frontend:build"
+            "browserTarget": "disertatie-frontend:build"
           }
         },
         "test": {
