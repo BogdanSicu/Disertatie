@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodService } from '../services/food/food.service';
 import { Food } from '../shared/models/Food';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +14,28 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private foodService:FoodService, 
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private router: Router) {
+
+    }
+
+    private history: string[] = [];
+
+    public startSaveHistory():void {
+      this.router.events.subscribe((event) => {
+        if(event instanceof NavigationEnd) {
+          this.history.push(event.urlAfterRedirects)
+        }
+      })
+    }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       params => {
         if(params['searchTerm']) {
-          this.foods = this.foodService.getAll()
-                        .filter( food => food.name.toLowerCase().includes(params['searchTerm'].toLowerCase()))
+          this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
+        } else if(params['tag']) {
+          this.foods = this.foodService.getAllFoodByTag(params['tag']);
         } else {
             this.foods = this.foodService.getAll();
         }
