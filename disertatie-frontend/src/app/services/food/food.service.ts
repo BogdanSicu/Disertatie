@@ -303,4 +303,8 @@ export class FoodService {
                 .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
+  getFoodById(id: number): Food {
+    return this.getAll().find(food => food.id == id)!;
+  }
+
 }
