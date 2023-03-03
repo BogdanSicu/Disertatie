@@ -1,9 +1,10 @@
 package com.munte.disertatiebackend.classes.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // a tag can be assigned to multiple foods and the foods can have multiple tags
 @Entity
@@ -14,6 +15,10 @@ public class Tags {
     private Long id;
     @Column(name = "name")
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "tags")
+    private Set<FoodTags> tagsInFoods = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -29,5 +34,13 @@ public class Tags {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<FoodTags> getTagsInFoods() {
+        return tagsInFoods;
+    }
+
+    public void setTagsInFoods(Set<FoodTags> tagsInFoods) {
+        this.tagsInFoods = tagsInFoods;
     }
 }

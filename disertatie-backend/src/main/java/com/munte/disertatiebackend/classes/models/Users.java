@@ -1,6 +1,8 @@
 package com.munte.disertatiebackend.classes.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // he can have multiple orders
 // he can have just 1 role
@@ -21,6 +23,16 @@ public class Users {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_roles_id", referencedColumnName = "id")
     private UserRoles role;
+
+    @OneToMany(mappedBy = "user")
+    private Set<FavouriteFoods> favouriteFoods = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Addresses address;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Orders> orders = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,5 +72,29 @@ public class Users {
 
     public void setRole(UserRoles role) {
         this.role = role;
+    }
+
+    public Set<FavouriteFoods> getFavouriteFoods() {
+        return favouriteFoods;
+    }
+
+    public void setFavouriteFoods(Set<FavouriteFoods> favouriteFoods) {
+        this.favouriteFoods = favouriteFoods;
+    }
+
+    public Addresses getAddress() {
+        return address;
+    }
+
+    public void setAddress(Addresses address) {
+        this.address = address;
+    }
+
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 }

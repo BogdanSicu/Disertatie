@@ -1,9 +1,10 @@
 package com.munte.disertatiebackend.classes.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // it can have multiple tags
 // it can have multiple ingredients
@@ -21,6 +22,20 @@ public class Food {
     private Double price;
     @Column(name = "stars")
     private Long stars;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "food")
+    private Set<FavouriteFoods> userFavouriteFoods = new HashSet<>();
+
+    @OneToMany(mappedBy = "food")
+    private Set<FoodIngredients> foodIngredients = new HashSet<>();
+
+    @OneToMany(mappedBy = "food")
+    private Set<FoodTags> foodTags = new HashSet<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "foodsInOrder")
+    private Set<Orders> ordersWithFoods = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,5 +75,37 @@ public class Food {
 
     public void setStars(Long stars) {
         this.stars = stars;
+    }
+
+    public Set<FavouriteFoods> getUserFavouriteFoods() {
+        return userFavouriteFoods;
+    }
+
+    public void setUserFavouriteFoods(Set<FavouriteFoods> userFavouriteFoods) {
+        this.userFavouriteFoods = userFavouriteFoods;
+    }
+
+    public Set<FoodIngredients> getFoodIngredients() {
+        return foodIngredients;
+    }
+
+    public void setFoodIngredients(Set<FoodIngredients> foodIngredients) {
+        this.foodIngredients = foodIngredients;
+    }
+
+    public Set<FoodTags> getFoodTags() {
+        return foodTags;
+    }
+
+    public void setFoodTags(Set<FoodTags> foodTags) {
+        this.foodTags = foodTags;
+    }
+
+    public Set<Orders> getOrdersWithFoods() {
+        return ordersWithFoods;
+    }
+
+    public void setOrdersWithFoods(Set<Orders> ordersWithFoods) {
+        this.ordersWithFoods = ordersWithFoods;
     }
 }

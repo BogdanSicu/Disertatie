@@ -1,16 +1,16 @@
 package com.munte.disertatiebackend.classes.models;
 
-import com.munte.disertatiebackend.classes.models.compositekeys.FoodTagsKey;
+
+import com.munte.disertatiebackend.classes.models.compositekeys.FavouriteFoodsKey;
 
 import javax.persistence.*;
 
 // many to many
 @Entity
-@Table(name = "FOOD_TAGS")
-public class FoodTags {
-
+@Table(name = "FAVORITE_FOODS")
+public class FavouriteFoods {
     @EmbeddedId
-    private FoodTagsKey id;
+    FavouriteFoodsKey id;
 
     @ManyToOne
     @MapsId("id")
@@ -19,14 +19,14 @@ public class FoodTags {
 
     @ManyToOne
     @MapsId("id")
-    @JoinColumn(name = "tag_id")
-    private Tags tags;
+    @JoinColumn(name = "user_id")
+    private Users user;
 
-    public FoodTagsKey getId() {
+    public FavouriteFoodsKey getId() {
         return id;
     }
 
-    public void setId(FoodTagsKey id) {
+    public void setId(FavouriteFoodsKey id) {
         this.id = id;
     }
 
@@ -38,11 +38,11 @@ public class FoodTags {
         this.food = food;
     }
 
-    public Tags getTags() {
-        return tags;
+    public Users getUser() {
+        return user;
     }
 
-    public void setTags(Tags tags) {
-        this.tags = tags;
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

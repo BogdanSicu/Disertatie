@@ -1,9 +1,10 @@
 package com.munte.disertatiebackend.classes.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // many users can have the same address
 @Entity
@@ -24,8 +25,17 @@ public class Addresses {
     private Long streetNumber;
     @Column(name = "building")
     private String building;
+    @Column(name = "staircase")
+    private String staircase;
     @Column(name = "room")
     private Long room;
+    @JsonIgnore
+    @OneToMany(mappedBy = "address")
+    private Set<Users> users = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "address")
+    private Set<Orders> orders = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -89,5 +99,29 @@ public class Addresses {
 
     public void setCounty(String county) {
         this.county = county;
+    }
+
+    public String getStaircase() {
+        return staircase;
+    }
+
+    public void setStaircase(String staircase) {
+        this.staircase = staircase;
+    }
+
+    public Set<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<Users> users) {
+        this.users = users;
+    }
+
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 }
