@@ -1,19 +1,18 @@
-package com.munte.disertatiebackend.dtos;
+package com.munte.disertatiebackend.classes.dtos;
 
-import com.munte.disertatiebackend.enums.FoodTags;
+import com.munte.disertatiebackend.classes.MOCFoodTags;
 
-import java.io.File;
 import java.util.List;
 
-public class FoodDTO {
+public class MOCFoodDTO {
     private String name;
     private double price;
-    private List<FoodTags> tags;
+    private List<MOCFoodTags> tags;
     private boolean favorite;
     private int stars;
-    private File image;
+    private byte[] image;
 
-    public FoodDTO() {
+    public MOCFoodDTO() {
     }
 
     public String getName() {
@@ -32,11 +31,11 @@ public class FoodDTO {
         this.price = price;
     }
 
-    public List<FoodTags> getTags() {
+    public List<MOCFoodTags> getTags() {
         return tags;
     }
 
-    public void setTags(List<FoodTags> tags) {
+    public void setTags(List<MOCFoodTags> tags) {
         this.tags = tags;
     }
 
@@ -56,11 +55,11 @@ public class FoodDTO {
         this.stars = stars;
     }
 
-    public File getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(File image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

@@ -1,21 +1,18 @@
 package com.munte.disertatiebackend.classes;
 
-import com.munte.disertatiebackend.enums.FoodTags;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Food implements Serializable {
+public class MOCFood implements Serializable {
     private int id;
     private String name;
     private double price;
-    private List<FoodTags> tags;
+    private List<MOCFoodTags> tags;
     private boolean favorite;
     private int stars;
     private String imageUrl;
 
-    public Food(int id, String name, double price, List<FoodTags> tags, boolean favorite, int stars, String imageUrl) {
+    public MOCFood(int id, String name, double price, List<MOCFoodTags> tags, boolean favorite, int stars, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -49,11 +46,11 @@ public class Food implements Serializable {
         this.price = price;
     }
 
-    public List<FoodTags> getTags() {
+    public List<MOCFoodTags> getTags() {
         return tags;
     }
 
-    public void setTags(List<FoodTags> tags) {
+    public void setTags(List<MOCFoodTags> tags) {
         this.tags = tags;
     }
 
