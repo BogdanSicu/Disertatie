@@ -12,6 +12,7 @@ import java.util.Set;
 public class Addresses {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "country")
     private String country;

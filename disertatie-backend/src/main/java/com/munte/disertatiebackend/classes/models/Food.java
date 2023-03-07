@@ -13,6 +13,7 @@ import java.util.Set;
 public class Food {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -20,8 +21,6 @@ public class Food {
     private String imageURL;
     @Column(name = "price")
     private Double price;
-    @Column(name = "stars")
-    private Long stars;
 
     @JsonIgnore
     @OneToMany(mappedBy = "food")
@@ -69,43 +68,19 @@ public class Food {
         this.price = price;
     }
 
-    public Long getStars() {
-        return stars;
-    }
-
-    public void setStars(Long stars) {
-        this.stars = stars;
-    }
-
     public Set<FavouriteFoods> getUserFavouriteFoods() {
         return userFavouriteFoods;
-    }
-
-    public void setUserFavouriteFoods(Set<FavouriteFoods> userFavouriteFoods) {
-        this.userFavouriteFoods = userFavouriteFoods;
     }
 
     public Set<FoodIngredients> getFoodIngredients() {
         return foodIngredients;
     }
 
-    public void setFoodIngredients(Set<FoodIngredients> foodIngredients) {
-        this.foodIngredients = foodIngredients;
-    }
-
     public Set<FoodTags> getFoodTags() {
         return foodTags;
     }
 
-    public void setFoodTags(Set<FoodTags> foodTags) {
-        this.foodTags = foodTags;
-    }
-
     public Set<Orders> getOrdersWithFoods() {
         return ordersWithFoods;
-    }
-
-    public void setOrdersWithFoods(Set<Orders> ordersWithFoods) {
-        this.ordersWithFoods = ordersWithFoods;
     }
 }

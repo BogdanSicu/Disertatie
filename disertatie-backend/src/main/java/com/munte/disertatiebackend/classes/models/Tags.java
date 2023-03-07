@@ -12,6 +12,7 @@ import java.util.Set;
 public class Tags {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -38,9 +39,5 @@ public class Tags {
 
     public Set<FoodTags> getTagsInFoods() {
         return tagsInFoods;
-    }
-
-    public void setTagsInFoods(Set<FoodTags> tagsInFoods) {
-        this.tagsInFoods = tagsInFoods;
     }
 }

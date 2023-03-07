@@ -1,5 +1,6 @@
 package com.munte.disertatiebackend.classes.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.munte.disertatiebackend.classes.models.compositekeys.FoodTagsKey;
 
 import javax.persistence.*;
@@ -9,9 +10,11 @@ import javax.persistence.*;
 @Table(name = "FOOD_TAGS")
 public class FoodTags {
 
+    @JsonIgnore
     @EmbeddedId
     private FoodTagsKey id;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("id")
     @JoinColumn(name = "food_id")
