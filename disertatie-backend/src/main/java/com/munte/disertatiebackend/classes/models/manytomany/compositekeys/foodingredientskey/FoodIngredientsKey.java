@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.classes.models.compositekeys.foodingredientskey;
+package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodingredientskey;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

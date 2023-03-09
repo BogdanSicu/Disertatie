@@ -1,6 +1,10 @@
 package com.munte.disertatiebackend.classes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.munte.disertatiebackend.classes.models.manytomany.FavouriteFoods;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodTags;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodsInOrders;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,8 +37,8 @@ public class Food {
     private Set<FoodTags> foodTags = new HashSet<>();
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "foodsInOrder")
-    private Set<Orders> ordersWithFoods = new HashSet<>();
+    @OneToMany(mappedBy = "food")
+    private Set<FoodsInOrders> foodsInOrders = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -80,7 +84,7 @@ public class Food {
         return foodTags;
     }
 
-    public Set<Orders> getOrdersWithFoods() {
-        return ordersWithFoods;
+    public Set<FoodsInOrders> getFoodsInOrders() {
+        return foodsInOrders;
     }
 }

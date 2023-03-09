@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.classes.models.compositekeys.favouritefoodskey;
+package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.favouritefoodskey;
 
 public class FavouriteFoodsKeyBuilder {
 

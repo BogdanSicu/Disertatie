@@ -1,6 +1,7 @@
 package com.munte.disertatiebackend.classes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
 
 import javax.persistence.*;
 import java.util.HashSet;

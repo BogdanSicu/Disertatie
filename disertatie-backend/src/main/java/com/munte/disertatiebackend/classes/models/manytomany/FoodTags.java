@@ -1,7 +1,9 @@
-package com.munte.disertatiebackend.classes.models;
+package com.munte.disertatiebackend.classes.models.manytomany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.munte.disertatiebackend.classes.models.compositekeys.foodtagskey.FoodTagsKey;
+import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.models.Tags;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodtagskey.FoodTagsKey;
 
 import javax.persistence.*;
 

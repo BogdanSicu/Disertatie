@@ -3,9 +3,15 @@ package com.munte.disertatiebackend.configurations;
 import com.munte.disertatiebackend.classes.models.*;
 import com.munte.disertatiebackend.classes.models.addresses.Addresses;
 import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
-import com.munte.disertatiebackend.classes.models.compositekeys.favouritefoodskey.FavouriteFoodsKeyBuilder;
-import com.munte.disertatiebackend.classes.models.compositekeys.foodingredientskey.FoodIngredientsKeyBuilder;
-import com.munte.disertatiebackend.classes.models.compositekeys.foodtagskey.FoodTagsKeyBuilder;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodsInOrders;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.favouritefoodskey.FavouriteFoodsKeyBuilder;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodingredientskey.FoodIngredientsKeyBuilder;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodsinorders.FoodsInOrderKey;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodsinorders.FoodsInOrdersKeyBuilder;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodtagskey.FoodTagsKeyBuilder;
+import com.munte.disertatiebackend.classes.models.manytomany.FavouriteFoods;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodTags;
 import com.munte.disertatiebackend.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -128,17 +134,31 @@ public class DefaultDbDataConfiguration {
         };
     }
 
-//    @Bean(name = "orders-configuration")
-//    @DependsOn({"users-configuration", "food-configuration", "addresses-configuration"})
-//    CommandLineRunner addDefaultOrders(OrdersRepository ordersRepository, UsersRepository usersRepository) {
-//        return args -> {
-//
-//            Orders orders = new Orders();
-//
-//            orders.set
-//
-//        };
-//    }
+    @Bean(name = "orders-configuration")
+    @DependsOn({"users-configuration", "addresses-configuration"})
+    CommandLineRunner addDefaultOrders(OrdersRepository ordersRepository, UsersRepository usersRepository) {
+        return args -> {
+
+            Orders orders = new Orders();
+
+            orders.setUser(usersRepository.findAll().stream().filter(users -> users.getId() == 1l).toList().get(0));
+            orders.setAddress(usersRepository.findAll().stream().filter(users -> users.getId() == 1l).toList().get(0).getAddress());
+
+            ordersRepository.save(orders);
+        };
+    }
+
+    @Bean(name = "foods-in-orders-configuration")
+    @DependsOn({"orders-configuration", "food-configuration"})
+    CommandLineRunner addDefaultFoodsInOrders(FoodsInOrdersRepository foodsInOrdersRepository) {
+        return args -> {
+            FoodsInOrders foodsInOrders = new FoodsInOrders();
+            foodsInOrders.setId(new FoodsInOrdersKeyBuilder().addOrderId(1L).addFoodId(1L).build());
+            foodsInOrders.setHow_many(3L);
+
+            foodsInOrdersRepository.save(foodsInOrders);
+        };
+    }
 
 
 

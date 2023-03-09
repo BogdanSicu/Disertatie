@@ -1,8 +1,10 @@
-package com.munte.disertatiebackend.classes.models;
+package com.munte.disertatiebackend.classes.models.manytomany;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.munte.disertatiebackend.classes.models.compositekeys.favouritefoodskey.FavouriteFoodsKey;
+import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.models.Users;
+import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.favouritefoodskey.FavouriteFoodsKey;
 
 import javax.persistence.*;
 

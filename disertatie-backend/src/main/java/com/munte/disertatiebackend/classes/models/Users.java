@@ -1,6 +1,7 @@
 package com.munte.disertatiebackend.classes.models;
 
 import com.munte.disertatiebackend.classes.models.addresses.Addresses;
+import com.munte.disertatiebackend.classes.models.manytomany.FavouriteFoods;
 
 import javax.persistence.*;
 import java.util.HashSet;

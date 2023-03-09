@@ -2,6 +2,8 @@ package com.munte.disertatiebackend.classes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.munte.disertatiebackend.classes.models.addresses.Addresses;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
+import com.munte.disertatiebackend.classes.models.manytomany.FoodsInOrders;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -24,13 +26,8 @@ public class Orders {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Addresses address;
 
-    @ManyToMany
-    @JoinTable(
-            name = "foods_in_order",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "food_id")
-    )
-    private Set<Food> foodsInOrder = new HashSet<>();
+    @OneToMany(mappedBy = "order")
+    private Set<FoodsInOrders> ordersWithFood = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -56,11 +53,7 @@ public class Orders {
         this.address = address;
     }
 
-    public Set<Food> getFoodsInOrder() {
-        return foodsInOrder;
-    }
-
-    public void setFoodsInOrder(Set<Food> foodsInOrder) {
-        this.foodsInOrder = foodsInOrder;
+    public Set<FoodsInOrders> getOrdersWithFood() {
+        return ordersWithFood;
     }
 }

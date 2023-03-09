@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.classes.models.compositekeys.foodtagskey;
+package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodtagskey;
 
 public class FoodTagsKeyBuilder {
     private FoodTagsKey foodTagsKey = new FoodTagsKey();
