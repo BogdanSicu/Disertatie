@@ -18,7 +18,7 @@ public class Ingredients {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "ingredients")
+    @OneToMany(mappedBy = "ingredient")
     private Set<FoodIngredients> ingredientsInFood = new HashSet<>();
 
     public Long getId() {

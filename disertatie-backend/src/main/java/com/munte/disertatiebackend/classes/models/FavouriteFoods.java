@@ -1,7 +1,8 @@
 package com.munte.disertatiebackend.classes.models;
 
 
-import com.munte.disertatiebackend.classes.models.compositekeys.FavouriteFoodsKey;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.munte.disertatiebackend.classes.models.compositekeys.favouritefoodskey.FavouriteFoodsKey;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "FAVORITE_FOODS")
 public class FavouriteFoods {
+    @JsonIgnore
     @EmbeddedId
     FavouriteFoodsKey id;
 
@@ -17,6 +19,7 @@ public class FavouriteFoods {
     @JoinColumn(name = "food_id")
     private Food food;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("id")
     @JoinColumn(name = "user_id")

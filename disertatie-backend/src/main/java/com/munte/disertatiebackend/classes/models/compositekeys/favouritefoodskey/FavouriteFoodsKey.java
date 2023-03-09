@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.classes.models.compositekeys;
+package com.munte.disertatiebackend.classes.models.compositekeys.favouritefoodskey;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

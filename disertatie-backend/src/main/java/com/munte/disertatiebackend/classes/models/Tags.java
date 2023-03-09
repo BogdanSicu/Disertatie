@@ -18,7 +18,7 @@ public class Tags {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "tags")
+    @OneToMany(mappedBy = "tag")
     private Set<FoodTags> tagsInFoods = new HashSet<>();
 
     public Long getId() {

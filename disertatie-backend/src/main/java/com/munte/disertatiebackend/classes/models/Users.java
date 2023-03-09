@@ -1,5 +1,7 @@
 package com.munte.disertatiebackend.classes.models;
 
+import com.munte.disertatiebackend.classes.models.addresses.Addresses;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +23,7 @@ public class Users {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_roles_id", referencedColumnName = "id")
     private UserRoles role;
 

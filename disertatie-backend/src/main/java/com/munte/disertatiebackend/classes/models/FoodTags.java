@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.classes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.munte.disertatiebackend.classes.models.compositekeys.FoodTagsKey;
+import com.munte.disertatiebackend.classes.models.compositekeys.foodtagskey.FoodTagsKey;
 
 import javax.persistence.*;
 
@@ -23,7 +23,7 @@ public class FoodTags {
     @ManyToOne
     @MapsId("id")
     @JoinColumn(name = "tag_id")
-    private Tags tags;
+    private Tags tag;
 
     public FoodTagsKey getId() {
         return id;
@@ -41,11 +41,11 @@ public class FoodTags {
         this.food = food;
     }
 
-    public Tags getTags() {
-        return tags;
+    public Tags getTag() {
+        return tag;
     }
 
-    public void setTags(Tags tags) {
-        this.tags = tags;
+    public void setTag(Tags tag) {
+        this.tag = tag;
     }
 }
