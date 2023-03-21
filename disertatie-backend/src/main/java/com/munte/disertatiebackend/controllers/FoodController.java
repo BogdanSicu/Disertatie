@@ -1,9 +1,10 @@
 package com.munte.disertatiebackend.controllers;
 
 import com.munte.disertatiebackend.classes.models.Food;
-import com.munte.disertatiebackend.services.FoodService;
+import com.munte.disertatiebackend.services.food.FoodService;
+import com.munte.disertatiebackend.services.food.FoodServiceImplementation;
+import com.munte.disertatiebackend.services.ingredients.IngredientsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

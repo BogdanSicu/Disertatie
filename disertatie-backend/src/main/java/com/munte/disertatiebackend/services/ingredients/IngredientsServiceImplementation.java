@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.services;
+package com.munte.disertatiebackend.services.ingredients;
 
 import com.munte.disertatiebackend.classes.dtos.IngredientsDTO;
 import com.munte.disertatiebackend.classes.models.Ingredients;
@@ -7,19 +7,18 @@ import com.munte.disertatiebackend.repositories.IngredientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class IngredientsService {
+public class IngredientsServiceImplementation implements IngredientsService{
 
     private final IngredientsRepository ingredientsRepository;
     private final IngredientsMapper ingredientsMapper;
 
     @Autowired
-    public IngredientsService(IngredientsRepository ingredientsRepository, IngredientsMapper ingredientsMapper1) {
+    public IngredientsServiceImplementation(IngredientsRepository ingredientsRepository, IngredientsMapper ingredientsMapper1) {
         this.ingredientsRepository = ingredientsRepository;
         this.ingredientsMapper = ingredientsMapper1;
     }

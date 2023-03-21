@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.services;
+package com.munte.disertatiebackend.services.food;
 
 import com.munte.disertatiebackend.classes.models.Food;
 import com.munte.disertatiebackend.repositories.FoodRepository;
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FoodService {
+public class FoodServiceImplementation implements FoodService{
 
     private final FoodRepository foodRepository;
 
     @Autowired
-    public FoodService(FoodRepository foodRepository) {
+    public FoodServiceImplementation(FoodRepository foodRepository) {
         this.foodRepository = foodRepository;
     }
 

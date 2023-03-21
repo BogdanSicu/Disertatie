@@ -27,7 +27,7 @@ public class FoodsInOrders {
     private Orders order;
 
     @Column(name = "how_many")
-    private Long how_many;
+    private Long howMany;
 
     public FoodsInOrderKey getId() {
         return id;
@@ -53,11 +53,11 @@ public class FoodsInOrders {
         this.order = order;
     }
 
-    public Long getHow_many() {
-        return how_many;
+    public Long getHowMany() {
+        return howMany;
     }
 
-    public void setHow_many(Long how_many) {
-        this.how_many = how_many;
+    public void setHowMany(Long howMany) {
+        this.howMany = howMany;
     }
 }

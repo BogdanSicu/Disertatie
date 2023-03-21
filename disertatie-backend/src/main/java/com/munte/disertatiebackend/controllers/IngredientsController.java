@@ -1,7 +1,8 @@
 package com.munte.disertatiebackend.controllers;
 
 import com.munte.disertatiebackend.classes.dtos.IngredientsDTO;
-import com.munte.disertatiebackend.services.IngredientsService;
+import com.munte.disertatiebackend.services.ingredients.IngredientsService;
+import com.munte.disertatiebackend.services.ingredients.IngredientsServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

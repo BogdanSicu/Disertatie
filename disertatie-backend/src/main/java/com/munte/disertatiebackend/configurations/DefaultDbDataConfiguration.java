@@ -6,7 +6,6 @@ import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodsInOrders;
 import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.favouritefoodskey.FavouriteFoodsKeyBuilder;
 import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodingredientskey.FoodIngredientsKeyBuilder;
-import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodsinorders.FoodsInOrderKey;
 import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodsinorders.FoodsInOrdersKeyBuilder;
 import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodtagskey.FoodTagsKeyBuilder;
 import com.munte.disertatiebackend.classes.models.manytomany.FavouriteFoods;
@@ -154,7 +153,7 @@ public class DefaultDbDataConfiguration {
         return args -> {
             FoodsInOrders foodsInOrders = new FoodsInOrders();
             foodsInOrders.setId(new FoodsInOrdersKeyBuilder().addOrderId(1L).addFoodId(1L).build());
-            foodsInOrders.setHow_many(3L);
+            foodsInOrders.setHowMany(3L);
 
             foodsInOrdersRepository.save(foodsInOrders);
         };
