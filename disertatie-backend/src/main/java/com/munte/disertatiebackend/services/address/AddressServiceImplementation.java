@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AddressServiceImplementation implements AddressService{
@@ -38,7 +39,23 @@ public class AddressServiceImplementation implements AddressService{
     }
 
     @Override
-    public ResponseEntity<AddressDTO> saveNewAddress(AddressDTO addressDTO) {
-        return null;
+    public ResponseEntity<String> saveNewAddress(AddressDTO addressDTO) {
+        if(addressDTO == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        if(addressesRepository.findAll().stream()
+                .filter(x -> x.getCountry().equals(addressDTO.getCountry()) &&
+                        x.getCounty().equals(addressDTO.getCounty()) &&
+                        x.getCity().equals(addressDTO.getCity()) &&
+                        x.getStreet().equals(addressDTO.getStreet()) &&
+                        x.getStreetNumber().equals(addressDTO.getStreetNumber()) &&
+                        x.getBuilding().equals(addressDTO.getBuilding()) &&
+                        x.getStaircase().equals(addressDTO.getStaircase()) &&
+                        x.getRoom().equals(addressDTO.getRoom())).toList().size() == 0) {
+            addressesRepository.save(addressMapper.toModel(addressDTO));
+            return ResponseEntity.ok("The address was created");
+        }
+        return ResponseEntity.badRequest().body("This address already exists");
     }
 }

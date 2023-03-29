@@ -8,5 +8,5 @@ import java.util.List;
 public interface AddressService {
     public List<AddressDTO> getAllAddresses();
     public AddressDTO getAddressById(Long id);
-    public ResponseEntity<AddressDTO> saveNewAddress(AddressDTO addressDTO);
+    public ResponseEntity<String> saveNewAddress(AddressDTO addressDTO);
 }

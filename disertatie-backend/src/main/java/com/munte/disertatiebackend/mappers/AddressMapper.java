@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AddressMapper {
     public AddressDTO toDTO(Addresses addresses) {
         AddressDTOBuilder addressDTOBuilder = new AddressDTOBuilder();
-        AddressDTO addressDTO = addressDTOBuilder
+        return addressDTOBuilder
                 .addCountry(addresses.getCountry())
                 .addCounty(addresses.getCounty())
                 .addCity(addresses.getCity())
@@ -19,12 +19,11 @@ public class AddressMapper {
                 .addBuilding(addresses.getBuilding())
                 .addStaircase(addresses.getStaircase())
                 .addRoom(addresses.getRoom()).build();
-        return addressDTO;
     }
 
     public Addresses toModel(AddressDTO addressDTO) {
         AddressesBuilder addressesBuilder = new AddressesBuilder();
-        Addresses address = addressesBuilder
+        return addressesBuilder
                 .addCountry(addressDTO.getCountry())
                 .addCounty(addressDTO.getCounty())
                 .addCity(addressDTO.getCity())
@@ -33,6 +32,5 @@ public class AddressMapper {
                 .addBuilding(addressDTO.getBuilding())
                 .addStaircase(addressDTO.getStaircase())
                 .addRoom(addressDTO.getRoom()).build();
-        return address;
     }
 }
