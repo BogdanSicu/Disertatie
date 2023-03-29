@@ -140,8 +140,8 @@ public class DefaultDbDataConfiguration {
 
             Orders orders = new Orders();
 
-            orders.setUser(usersRepository.findAll().stream().filter(users -> users.getId() == 1l).toList().get(0));
-            orders.setAddress(usersRepository.findAll().stream().filter(users -> users.getId() == 1l).toList().get(0).getAddress());
+            orders.setUser(usersRepository.findUsereById(1L));
+            orders.setAddress(usersRepository.findUsereById(1L).getAddress());
 
             ordersRepository.save(orders);
         };

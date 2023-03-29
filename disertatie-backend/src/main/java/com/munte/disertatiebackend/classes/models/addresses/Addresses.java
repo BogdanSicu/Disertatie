@@ -3,6 +3,7 @@ package com.munte.disertatiebackend.classes.models.addresses;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.munte.disertatiebackend.classes.models.Orders;
 import com.munte.disertatiebackend.classes.models.Users;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,14 +18,19 @@ public class Addresses {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "country")
+    @NotNull
     private String country;
     @Column(name = "county")
+    @NotNull
     private String county;
     @Column(name = "city")
+    @NotNull
     private String city;
     @Column(name = "street")
+    @NotNull
     private String street;
     @Column(name = "street_number")
+    @NotNull
     private Long streetNumber;
     @Column(name = "building")
     private String building;
