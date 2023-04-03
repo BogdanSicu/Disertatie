@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Food } from 'src/app/shared/models/Food';
 import { Tag } from 'src/app/shared/models/Tag';
 
@@ -7,7 +9,10 @@ import { Tag } from 'src/app/shared/models/Tag';
 })
 export class FoodService {
 
-  constructor() { }
+  readonly ROOT_URL = 'http://localhost:8080';
+  posts: Observable<Food[]> = new Observable<Food[]>;
+
+  constructor(private http: HttpClient) { }
 
   getAll():Food[] {
     return [
@@ -293,6 +298,7 @@ export class FoodService {
   }
 
   getAllFoodByTag(tag: string): Food[] {
+    this.testRequest();
     return tag=="All" ? 
       this.getAll() : 
         this.getAll().filter(food => food.tags?.includes(tag));
@@ -305,6 +311,11 @@ export class FoodService {
 
   getFoodById(id: number): Food {
     return this.getAll().find(food => food.id == id)!;
+  }
+
+  testRequest() {
+    this.posts = this.http.get<Food[]>(this.ROOT_URL + '/api/food/get-all-food')
+    console.log(this.posts);
   }
 
 }

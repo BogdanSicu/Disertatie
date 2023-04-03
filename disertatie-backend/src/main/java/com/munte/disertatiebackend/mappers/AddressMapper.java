@@ -7,7 +7,7 @@ import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddressMapper {
+public class AddressMapper implements Mapper<AddressDTO, Addresses>{
     public AddressDTO toDTO(Addresses addresses) {
         AddressDTOBuilder addressDTOBuilder = new AddressDTOBuilder();
         return addressDTOBuilder

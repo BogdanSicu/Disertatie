@@ -1,5 +1,6 @@
 package com.munte.disertatiebackend.controllers;
 
+import com.munte.disertatiebackend.classes.dtos.FoodDTO;
 import com.munte.disertatiebackend.classes.models.Food;
 import com.munte.disertatiebackend.services.food.FoodService;
 import com.munte.disertatiebackend.services.food.FoodServiceImplementation;
@@ -27,6 +28,13 @@ public class FoodController {
     public List<Food> getAllFood() {
         List<Food> newList = new ArrayList<>();
         newList = foodService.getAllFood();
+        return newList;
+    }
+
+    @GetMapping("get-all-food-test")
+    public List<FoodDTO> getAllFoodTEST() {
+        List<FoodDTO> newList = new ArrayList<>();
+        newList = foodService.getAllFoodTEST();
         return newList;
     }
 }
