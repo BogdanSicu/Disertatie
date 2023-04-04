@@ -6,9 +6,8 @@ import com.munte.disertatiebackend.services.food.FoodService;
 import com.munte.disertatiebackend.services.food.FoodServiceImplementation;
 import com.munte.disertatiebackend.services.ingredients.IngredientsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +35,10 @@ public class FoodController {
         List<FoodDTO> newList = new ArrayList<>();
         newList = foodService.getAllFoodTEST();
         return newList;
+    }
+
+    @PostMapping("save-food")
+    public ResponseEntity<String> saveFood(@RequestBody FoodDTO foodDto) {
+        return foodService.saveNewFood(foodDto);
     }
 }

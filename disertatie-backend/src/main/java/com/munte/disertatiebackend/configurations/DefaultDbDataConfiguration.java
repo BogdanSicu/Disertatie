@@ -30,7 +30,13 @@ public class DefaultDbDataConfiguration {
             pizza_all_cheese.setImageURL("src/main/java/com/munte/disertatiebackend/media/pizza_all_cheese.png");
             pizza_all_cheese.setPrice(30.00);
 
+            Food pizza_argentina = new Food();
+            pizza_argentina.setName("Pizza Argentina");
+            pizza_argentina.setImageURL("src/main/java/com/munte/disertatiebackend/media/pizza_argentina.png");
+            pizza_argentina.setPrice(30.00);
+
             foodRepository.save(pizza_all_cheese);
+            foodRepository.save(pizza_argentina);
         };
     }
 
@@ -142,6 +148,7 @@ public class DefaultDbDataConfiguration {
 
             orders.setUser(usersRepository.findUsereById(1L));
             orders.setAddress(usersRepository.findUsereById(1L).getAddress());
+            orders.setTotalPrice(30.5);
 
             ordersRepository.save(orders);
         };

@@ -18,27 +18,37 @@ public class IngredientsServiceImplementation implements IngredientsService{
     private final IngredientsMapper ingredientsMapper;
 
     @Autowired
-    public IngredientsServiceImplementation(IngredientsRepository ingredientsRepository, IngredientsMapper ingredientsMapper1) {
+    public IngredientsServiceImplementation(IngredientsRepository ingredientsRepository, IngredientsMapper ingredientsMapper) {
         this.ingredientsRepository = ingredientsRepository;
-        this.ingredientsMapper = ingredientsMapper1;
+        this.ingredientsMapper = ingredientsMapper;
     }
 
     public List<IngredientsDTO> getAllIngredients() {
-        List<IngredientsDTO> listDTO = new ArrayList<>();
-        for (Ingredients ingredient: ingredientsRepository.findAll().stream().toList()) {
-            listDTO.add(ingredientsMapper.toDTO(ingredient));
-        }
-        return listDTO;
+        return ingredientsRepository.findAll().stream().map(ingredientsMapper::toDTO).toList();
     }
 
-    public ResponseEntity<IngredientsDTO> saveNewIngredient(IngredientsDTO ingredientsDTO) {
-        if(ingredientsDTO != null) {
-            Ingredients newIngredient = new Ingredients();
-            newIngredient.setName(ingredientsDTO.getName());
-            ingredientsRepository.save(newIngredient);
-            return ResponseEntity.ok(ingredientsDTO);
-        } else {
-            return ResponseEntity.badRequest().body(ingredientsDTO);
+    public ResponseEntity<String> saveNewIngredient(IngredientsDTO ingredientsDTO) {
+        if(ingredientsDTO == null) {
+            return ResponseEntity.noContent().build();
         }
+
+        if(ingredientsRepository.findByName(ingredientsDTO.getName()) == null) {
+            ingredientsRepository.save(ingredientsMapper.toModel(ingredientsDTO));
+            return ResponseEntity.ok("The ingredient was created");
+        }
+
+        return ResponseEntity.badRequest().body("This ingredient already exists");
     }
+
+    @Override
+    public List<Ingredients> getAllModelIngredients() {
+        return ingredientsRepository.findAll();
+    }
+
+    @Override
+    public Ingredients getIngredientByName(String name) {
+        return ingredientsRepository.findByName(name);
+    }
+
+
 }

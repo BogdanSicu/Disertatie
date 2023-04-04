@@ -26,7 +26,7 @@ public class IngredientsController {
     }
 
     @PostMapping()
-    public ResponseEntity<IngredientsDTO> saveNewIngredients(@RequestBody IngredientsDTO ingredientsDTO) {
+    public ResponseEntity<String> saveNewIngredients(@RequestBody IngredientsDTO ingredientsDTO) {
         return ingredientsService.saveNewIngredient(ingredientsDTO);
     }
 }

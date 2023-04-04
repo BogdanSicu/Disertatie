@@ -87,4 +87,20 @@ public class Food {
     public Set<FoodsInOrders> getFoodsInOrders() {
         return foodsInOrders;
     }
+
+    public void setUserFavouriteFoods(Set<FavouriteFoods> userFavouriteFoods) {
+        this.userFavouriteFoods = userFavouriteFoods;
+    }
+
+    public void setFoodIngredients(Set<FoodIngredients> foodIngredients) {
+        this.foodIngredients = foodIngredients;
+    }
+
+    public void setFoodTags(Set<FoodTags> foodTags) {
+        this.foodTags = foodTags;
+    }
+
+    public void setFoodsInOrders(Set<FoodsInOrders> foodsInOrders) {
+        this.foodsInOrders = foodsInOrders;
+    }
 }

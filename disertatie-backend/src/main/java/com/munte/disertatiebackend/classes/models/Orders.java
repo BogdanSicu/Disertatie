@@ -28,6 +28,7 @@ public class Orders {
 
     @OneToMany(mappedBy = "order")
     private Set<FoodsInOrders> ordersWithFood = new HashSet<>();
+    private Double totalPrice;
 
     public Long getId() {
         return id;
@@ -55,5 +56,13 @@ public class Orders {
 
     public Set<FoodsInOrders> getOrdersWithFood() {
         return ordersWithFood;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
