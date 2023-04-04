@@ -2,23 +2,26 @@ package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.favo
 
 public class FavouriteFoodsKeyBuilder {
 
-    private FavouriteFoodsKey favouriteFoodsKey = new FavouriteFoodsKey();
+    private FavouriteFoodsKey favouriteFoodsKey;
 
-    private Long food_id;
+    private long food_id;
 
-    private Long user_id;
+    private long user_id;
 
-    public FavouriteFoodsKeyBuilder addFoodId(Long food_id) {
-        this.favouriteFoodsKey.setFood_id(food_id);
+    public FavouriteFoodsKeyBuilder addFoodId(long food_id) {
+        this.food_id = food_id;
         return this;
     }
 
-    public FavouriteFoodsKeyBuilder addUserId(Long user_id) {
-        this.favouriteFoodsKey.setUser_id(user_id);
+    public FavouriteFoodsKeyBuilder addUserId(long user_id) {
+        this.user_id = user_id;
         return this;
     }
 
     public FavouriteFoodsKey build() {
+        this.favouriteFoodsKey = new FavouriteFoodsKey();
+        this.favouriteFoodsKey.setFood_id(this.food_id);
+        this.favouriteFoodsKey.setUser_id(this.user_id);
         return this.favouriteFoodsKey;
     }
 }

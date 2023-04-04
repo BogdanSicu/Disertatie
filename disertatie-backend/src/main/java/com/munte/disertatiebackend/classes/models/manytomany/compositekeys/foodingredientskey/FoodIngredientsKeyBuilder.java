@@ -2,23 +2,26 @@ package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.food
 
 public class FoodIngredientsKeyBuilder {
 
-    private FoodIngredientsKey foodIngredientsKey = new FoodIngredientsKey();
+    private FoodIngredientsKey foodIngredientsKey;
 
-    private Long food_id;
+    private long food_id;
 
-    private Long ingredient_id;
+    private long ingredient_id;
 
-    public FoodIngredientsKeyBuilder addFoodId(Long food_id) {
-        this.foodIngredientsKey.setFood_id(food_id);
+    public FoodIngredientsKeyBuilder addFoodId(long food_id) {
+        this.food_id = food_id;
         return this;
     }
 
-    public FoodIngredientsKeyBuilder addIngredientId(Long ingredient_id) {
-        this.foodIngredientsKey.setIngredient_id(ingredient_id);
+    public FoodIngredientsKeyBuilder addIngredientId(long ingredient_id) {
+        this.ingredient_id = ingredient_id;
         return this;
     }
 
     public FoodIngredientsKey build() {
+        this.foodIngredientsKey  = new FoodIngredientsKey();
+        this.foodIngredientsKey.setFood_id(this.food_id);
+        this.foodIngredientsKey.setIngredient_id(this.ingredient_id);
         return foodIngredientsKey;
     }
 

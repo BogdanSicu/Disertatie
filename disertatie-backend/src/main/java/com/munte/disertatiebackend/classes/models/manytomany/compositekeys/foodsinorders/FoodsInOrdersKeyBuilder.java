@@ -2,23 +2,26 @@ package com.munte.disertatiebackend.classes.models.manytomany.compositekeys.food
 
 public class FoodsInOrdersKeyBuilder {
 
-    private FoodsInOrderKey foodsInOrderKey = new FoodsInOrderKey();
+    private FoodsInOrderKey foodsInOrderKey;
 
-    private Long food_id;
+    private long food_id;
 
-    private Long order_id;
+    private long order_id;
 
-    public FoodsInOrdersKeyBuilder addFoodId(Long food_id) {
-        this.foodsInOrderKey.setFood_id(food_id);
+    public FoodsInOrdersKeyBuilder addFoodId(long food_id) {
+        this.food_id = food_id;
         return this;
     }
 
-    public FoodsInOrdersKeyBuilder addOrderId(Long order_id) {
-        this.foodsInOrderKey.setOrder_id(order_id);
+    public FoodsInOrdersKeyBuilder addOrderId(long order_id) {
+        this.order_id = order_id;
         return this;
     }
 
     public FoodsInOrderKey build() {
+        this.foodsInOrderKey = new FoodsInOrderKey();
+        this.foodsInOrderKey.setOrder_id(this.order_id);
+        this.foodsInOrderKey.setFood_id(this.food_id);
         return this.foodsInOrderKey;
     }
 
