@@ -4,58 +4,66 @@ import javax.persistence.Column;
 
 public class AddressesBuilder {
 
-    private Addresses address = new Addresses();
-
+    private Addresses address;
     private String country;
     private String county;
     private String city;
     private String street;
-    private Long streetNumber;
+    private long streetNumber;
     private String building;
     private String staircase;
-    private Long room;
+    private long room;
 
     public AddressesBuilder addCountry(String country) {
-        address.setCountry(country);
+        this.country = country;
         return this;
     }
 
     public AddressesBuilder addCounty(String county) {
-        address.setCounty(county);
+        this.county = county;
         return this;
     }
 
     public AddressesBuilder addCity(String city) {
-        address.setCity(city);
+        this.city = city;
         return this;
     }
 
     public AddressesBuilder addStreet(String street) {
-        address.setStreet(street);
+        this.street = street;
         return this;
     }
 
-    public AddressesBuilder addStreetNumber(Long streetNumber) {
-        address.setStreetNumber(streetNumber);
+    public AddressesBuilder addStreetNumber(long streetNumber) {
+        this.streetNumber = streetNumber;
         return this;
     }
 
     public AddressesBuilder addBuilding(String building) {
-        address.setBuilding(building);
+        this.building = building;
         return this;
     }
 
     public AddressesBuilder addStaircase(String staircase) {
-        address.setStaircase(staircase);
+        this.staircase = staircase;
         return this;
     }
 
-    public AddressesBuilder addRoom(Long room) {
-        address.setRoom(room);
+    public AddressesBuilder addRoom(long room) {
+        this.room = room;
         return this;
     }
 
     public Addresses build() {
+        this.address = new Addresses();
+        this.address.setCountry(this.country);
+        this.address.setCounty(this.county);
+        this.address.setCity(this.city);
+        this.address.setStreet(this.street);
+        this.address.setStreetNumber(this.streetNumber);
+        this.address.setBuilding(this.building);
+        this.address.setStaircase(this.staircase);
+        this.address.setRoom(this.room);
         return address;
     }
 
