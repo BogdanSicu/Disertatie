@@ -26,6 +26,17 @@ public class Food {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "cooking_time")
+    private Long timeToCook;
+
+    public Long getTimeToCook() {
+        return timeToCook;
+    }
+
+    public void setTimeToCook(Long timeToCook) {
+        this.timeToCook = timeToCook;
+    }
+
     @JsonIgnore
     @OneToMany(mappedBy = "food")
     private Set<FavouriteFoods> userFavouriteFoods = new HashSet<>();

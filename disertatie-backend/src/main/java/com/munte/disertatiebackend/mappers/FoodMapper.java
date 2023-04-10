@@ -35,6 +35,7 @@ public class FoodMapper implements Mapper<FoodDTO, Food> {
         FoodDTO dto = new FoodDTO();
         dto.setName(model.getName());
         dto.setPrice(model.getPrice());
+        dto.setTimeToCook(model.getTimeToCook());
         dto.setIngredients(new ArrayList<>());
         for (FoodIngredients ingredient : model.getFoodIngredients()) {
             dto.getIngredients().add(ingredientsMapper.toDTO(ingredient.getIngredient()));
@@ -58,6 +59,7 @@ public class FoodMapper implements Mapper<FoodDTO, Food> {
         Food model = new Food();
         model.setPrice(dto.getPrice());
         model.setName(dto.getName());
+        model.setTimeToCook(dto.getTimeToCook());
         model.setImageURL("src/main/java/com/munte/disertatiebackend/media/" + model.getName().toLowerCase().replace(" ", "_"));
         return model;
     }
