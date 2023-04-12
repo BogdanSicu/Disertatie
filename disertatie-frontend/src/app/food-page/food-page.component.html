@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf = "!isLoaded" class="container">
     <img [src]="food.imageUrl" [alt]="food.name">
 
     <div class="details">

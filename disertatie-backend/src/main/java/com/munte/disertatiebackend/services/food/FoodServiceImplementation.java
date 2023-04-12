@@ -76,6 +76,15 @@ public class FoodServiceImplementation implements FoodService{
         return ResponseEntity.badRequest().body("This food already exists");
     }
 
+    @Override
+    public FoodDTO getFoodByName(String foodName) {
+        Food food = foodRepository.findByName(foodName);
+        if(food != null) {
+            return foodMapper.toDTO(food);
+        }
+        return null;
+    }
+
     private void savePicture(String path, byte[] image) {
         try {
             FileOutputStream fos = new FileOutputStream(path + ".png");

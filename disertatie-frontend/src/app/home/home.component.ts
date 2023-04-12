@@ -11,12 +11,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   foods:Food[] = [];
+  baseFoods: Food[] = [];
+  isLoaded: Boolean = false;
 
   constructor(
     private foodService:FoodService, 
     private route: ActivatedRoute,
     private router: Router) {
-
+      
     }
 
     private history: string[] = [];
@@ -30,21 +32,28 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.foodService.getFoodByNameRequest('Pizza All Cheese')
+    this.getAllFoods();
     this.route.params.subscribe(
       params => {
         if(params['searchTerm']) {
-          this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
-          // console.log(this.foods) 
+          this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm'], this.baseFoods);
         } else if(params['tag']) {
-          this.foods = this.foodService.getAllFoodByTag(params['tag']);
-          // console.log(this.foods) 
+          this.foods = this.foodService.getAllFoodByTag(params['tag'], this.baseFoods);
         } else {
-            this.foods = this.foodService.getAll();
-            console.log(this.foods) 
+            this.foods = this.baseFoods;
         }
-        
       }
     )
+  }
+
+  getAllFoods() {
+    this.isLoaded = true;
+    this.foodService.testRequest().subscribe( response => {
+      this.baseFoods = response;
+      this.foods = response;
+      this.isLoaded = false;
+    })
   }
 
 

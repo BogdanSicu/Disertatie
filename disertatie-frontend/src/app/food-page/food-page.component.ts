@@ -11,14 +11,20 @@ import { ActivatedRoute } from '@angular/router';
 export class FoodPageComponent implements OnInit {
 
   food!: Food;
+  isLoaded: Boolean = false;
 
   constructor(private foodService: FoodService,
               private activatedRoute: ActivatedRoute) { 
 
       activatedRoute.params.subscribe(
         (params) => {
-          if(params['id']) {
-            this.food =  foodService.getFoodById(params['id'])
+          if(params['name']) {
+            this.isLoaded = true;
+            this.foodService.getFoodByNameRequest(params['name']).subscribe( response => {
+              this.food = response;
+              this.isLoaded = false;
+              console.log(this.food);
+            })
           }
         }
       )

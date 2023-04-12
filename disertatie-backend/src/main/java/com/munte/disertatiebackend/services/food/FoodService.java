@@ -11,5 +11,6 @@ public interface FoodService {
 
     public List<FoodDTO> getAllFoodTEST();
 
-    ResponseEntity<String> saveNewFood(FoodDTO foodDto);
+    public ResponseEntity<String> saveNewFood(FoodDTO foodDto);
+    public FoodDTO getFoodByName(String foodName);
 }

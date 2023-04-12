@@ -37,6 +37,11 @@ public class FoodController {
         return newList;
     }
 
+    @GetMapping("get-food-by-name")
+    public FoodDTO getFoodByName(@RequestParam String name) {
+        return foodService.getFoodByName(name);
+    }
+
     @PostMapping("save-food")
     public ResponseEntity<String> saveFood(@RequestBody FoodDTO foodDto) {
         return foodService.saveNewFood(foodDto);

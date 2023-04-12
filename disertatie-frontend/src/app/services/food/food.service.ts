@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Food } from 'src/app/shared/models/Food';
 import { Tag } from 'src/app/shared/models/Tag';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,12 +14,6 @@ export class FoodService {
   private foods: Food[] = [];
 
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer) { }
-
-  getAll():Food[] {
-    if(this.foods.length == 0)
-    this.testRequest();
-    return this.foods;
-  }
   
   getAllTag():Tag[] {
     // numarul trebuie calculat pe server - cate mancaruri au tagurile respective
@@ -35,23 +29,40 @@ export class FoodService {
     ];
   }
 
-  getAllFoodByTag(tag: string): Food[] {
+  // getAllFoodByTag(tag: string): Food[] {
+  //   return tag=="All" ? 
+  //     this.getAll() : 
+  //       this.getAll().filter(food => food.tags?.includes(tag));
+  // }
+
+  // getAllFoodsBySearchTerm(searchTerm: string): Food[] {
+  //   return this.getAll()
+  //               .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  // }
+
+  // getFoodById(id: number): Food {
+  //   return this.getAll().find(food => food.id == id)!;
+  // }
+
+  getAllFoodByTag(tag: string, foods: Food[]): Food[] {
+    this.foods = foods;
     return tag=="All" ? 
-      this.getAll() : 
-        this.getAll().filter(food => food.tags?.includes(tag));
+      foods : 
+        foods.filter(food => food.tags?.includes(tag));
   }
 
-  getAllFoodsBySearchTerm(searchTerm: string): Food[] {
-    return this.getAll()
+  getAllFoodsBySearchTerm(searchTerm: string, foods: Food[]): Food[] {
+    this.foods = foods;
+    return foods
                 .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
   getFoodById(id: number): Food {
-    return this.getAll().find(food => food.id == id)!;
+    return this.foods.find(food => food.id == id)!;
   }
 
-  private testRequest() {
-    this.http.get(this.ROOT_URL + "/api/food/get-all-food-test")
+  testRequest(): Observable<Food[]> {
+    return this.http.get(this.ROOT_URL + "/api/food/get-all-food-test")
     .pipe(
       map(response => {
         const responseArray = [];
@@ -59,14 +70,14 @@ export class FoodService {
           
           if(response.hasOwnProperty(key)){
 
-            let ingredients = [];
+            let responseIngredients = [];
             for(let i=0; i<response[key].ingredients.length; i++) {
-              ingredients.push(response[key].ingredients[i].name);
+              responseIngredients.push(response[key].ingredients[i].name);
             }
 
-            let tags = [];
+            let responseTags = [];
             for(let i=0; i<response[key].tags.length; i++) {
-              tags.push(response[key].tags[i].name);
+              responseTags.push(response[key].tags[i].name);
             }
 
             let myImage = this._sanitizer
@@ -76,8 +87,8 @@ export class FoodService {
               id: key, 
               cookTime: response[key].cookTime, 
               name: response[key].name,
-              ingredients: ingredients,
-              tags: tags,
+              ingredients: responseIngredients,
+              tags: responseTags,
               price: response[key].price,
               imageUrl: myImage
             })
@@ -87,9 +98,40 @@ export class FoodService {
         return responseArray
       })
     )
-    .subscribe(response => {
-      this.foods = response;
-    })
+  }
+
+  getFoodByNameRequest(foodName: string) : Observable<Food> {
+    return this.http.get(this.ROOT_URL + "/api/food/get-food-by-name", 
+    {params: {
+      name: foodName
+    }})
+    .pipe(
+      map(response => {
+        let food:Food = new Food();
+        
+        let responseIngredients = [];
+        for(let i=0; i<response['ingredients'].length; i++) {
+          responseIngredients.push(response['ingredients'][i].name);
+        }
+
+        let responseTags = [];
+        for(let i=0; i<response['tags'].length; i++) {
+          responseTags.push(response['tags'][i].name);
+        }
+
+        let myImage = this._sanitizer
+            .bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + response['image'])
+        
+        food.imageUrl = myImage;
+        food.cookTime = response['cookTime'];
+        food.ingredients = responseIngredients;
+        food.tags = responseTags;
+        food.name = response['name'];
+        food.price = response['price'];
+        return food;
+
+      })
+    )
   }
 
 }
