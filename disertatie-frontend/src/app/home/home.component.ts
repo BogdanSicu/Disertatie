@@ -34,13 +34,19 @@ export class HomeComponent implements OnInit {
       params => {
         if(params['searchTerm']) {
           this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
+          // console.log(this.foods) 
         } else if(params['tag']) {
           this.foods = this.foodService.getAllFoodByTag(params['tag']);
+          // console.log(this.foods) 
         } else {
             this.foods = this.foodService.getAll();
+            console.log(this.foods) 
         }
+        
       }
     )
   }
+
+
 
 }

@@ -29,13 +29,13 @@ public class DefaultDbDataConfiguration {
             pizza_all_cheese.setName("Pizza All Cheese");
             pizza_all_cheese.setImageURL("src/main/java/com/munte/disertatiebackend/media/pizza_all_cheese.png");
             pizza_all_cheese.setPrice(30.00);
-            pizza_all_cheese.setTimeToCook(45L);
+            pizza_all_cheese.setCookTime(45L);
 
             Food pizza_argentina = new Food();
             pizza_argentina.setName("Pizza Argentina");
             pizza_argentina.setImageURL("src/main/java/com/munte/disertatiebackend/media/pizza_argentina.png");
             pizza_argentina.setPrice(30.00);
-            pizza_argentina.setTimeToCook(45L);
+            pizza_argentina.setCookTime(45L);
 
             foodRepository.save(pizza_all_cheese);
             foodRepository.save(pizza_argentina);

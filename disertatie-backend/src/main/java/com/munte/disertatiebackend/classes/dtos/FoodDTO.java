@@ -8,14 +8,14 @@ public class FoodDTO {
     private List<TagsDTO> tags;
     private List<IngredientsDTO> ingredients;
     private byte[] image;
-    private Long timeToCook;
+    private Long cookTime;
 
-    public Long getTimeToCook() {
-        return timeToCook;
+    public Long getCookTime() {
+        return cookTime;
     }
 
-    public void setTimeToCook(Long timeToCook) {
-        this.timeToCook = timeToCook;
+    public void setCookTime(Long timeToCook) {
+        this.cookTime = timeToCook;
     }
 
     public String getName() {

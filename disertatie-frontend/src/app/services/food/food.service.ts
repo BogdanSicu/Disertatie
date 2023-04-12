@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 import { Food } from 'src/app/shared/models/Food';
 import { Tag } from 'src/app/shared/models/Tag';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -10,277 +11,14 @@ import { Tag } from 'src/app/shared/models/Tag';
 export class FoodService {
 
   readonly ROOT_URL = 'http://localhost:8080';
-  posts: Observable<Food[]> = new Observable<Food[]>;
+  private foods: Food[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _sanitizer: DomSanitizer) { }
 
   getAll():Food[] {
-    return [
-      {
-        id: 1,
-        name: 'Pizza All Cheese',
-        cookTime: '10-20',
-        price: 10,
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.5,
-        imageUrl: "./assets/pizza_all_cheese.png",
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 2,
-        name: 'Pizza Argentina',
-        price: 20,
-        cookTime: '20-30',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2', 'ingredient3', 'ingredient4', 'ingredient5'],
-        stars: 4.7,
-        imageUrl: './assets/pizza_argentina.png',
-        tags: ['SlowFood', 'Lunch'],
-      },
-      {
-        id: 3,
-        name: 'Pizza Carnivor',
-        price: 5,
-        cookTime: '10-15',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.5,
-        imageUrl: './assets/pizza_carnivor.png',
-        tags: ['FastFood', 'Hamburger'],
-      },
-      {
-        id: 4,
-        name: 'Pizza Clasic',
-        price: 2,
-        cookTime: '15-20',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.3,
-        imageUrl: './assets/pizza_clasic.png',
-        tags: ['FastFood', 'Fry'],
-      },
-      {
-        id: 5,
-        name: 'Pizza Double Pepperoni',
-        price: 11,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.0,
-        imageUrl: './assets/pizza_double_pepperoni.png',
-        tags: ['SlowFood', 'Soup'],
-      },
-      {
-        id: 6,
-        name: 'Pizza Rustic',
-        price: 9,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.0,
-        imageUrl: './assets/pizza_rustic.png',
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 7,
-        name: 'Pizza All Cheese',
-        cookTime: '10-20',
-        price: 10,
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.5,
-        imageUrl: "./assets/pizza_all_cheese.png",
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 8,
-        name: 'Pizza Argentina',
-        price: 20,
-        cookTime: '20-30',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2', 'ingredient3', 'ingredient4', 'ingredient5'],
-        stars: 4.7,
-        imageUrl: './assets/pizza_argentina.png',
-        tags: ['SlowFood', 'Lunch'],
-      },
-      {
-        id: 9,
-        name: 'Pizza Carnivor',
-        price: 5,
-        cookTime: '10-15',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.5,
-        imageUrl: './assets/pizza_carnivor.png',
-        tags: ['FastFood', 'Hamburger'],
-      },
-      {
-        id: 10,
-        name: 'Pizza Clasic',
-        price: 2,
-        cookTime: '15-20',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.3,
-        imageUrl: './assets/pizza_clasic.png',
-        tags: ['FastFood', 'Fry'],
-      },
-      {
-        id: 11,
-        name: 'Pizza Double Pepperoni',
-        price: 11,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.0,
-        imageUrl: './assets/pizza_double_pepperoni.png',
-        tags: ['SlowFood', 'Soup'],
-      },
-      {
-        id: 12,
-        name: 'Pizza Rustic',
-        price: 9,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.0,
-        imageUrl: './assets/pizza_rustic.png',
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 13,
-        name: 'Pizza All Cheese',
-        cookTime: '10-20',
-        price: 10,
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.5,
-        imageUrl: "./assets/pizza_all_cheese.png",
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 14,
-        name: 'Pizza Argentina',
-        price: 20,
-        cookTime: '20-30',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2', 'ingredient3', 'ingredient4', 'ingredient5'],
-        stars: 4.7,
-        imageUrl: './assets/pizza_argentina.png',
-        tags: ['SlowFood', 'Lunch'],
-      },
-      {
-        id: 15,
-        name: 'Pizza Carnivor',
-        price: 5,
-        cookTime: '10-15',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.5,
-        imageUrl: './assets/pizza_carnivor.png',
-        tags: ['FastFood', 'Hamburger'],
-      },
-      {
-        id: 16,
-        name: 'Pizza Clasic',
-        price: 2,
-        cookTime: '15-20',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.3,
-        imageUrl: './assets/pizza_clasic.png',
-        tags: ['FastFood', 'Fry'],
-      },
-      {
-        id: 17,
-        name: 'Pizza Double Pepperoni',
-        price: 11,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.0,
-        imageUrl: './assets/pizza_double_pepperoni.png',
-        tags: ['SlowFood', 'Soup'],
-      },
-      {
-        id: 18,
-        name: 'Pizza Rustic',
-        price: 9,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.0,
-        imageUrl: './assets/pizza_rustic.png',
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 19,
-        name: 'Pizza All Cheese',
-        cookTime: '10-20',
-        price: 10,
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.5,
-        imageUrl: "./assets/pizza_all_cheese.png",
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-      {
-        id: 20,
-        name: 'Pizza Argentina',
-        price: 20,
-        cookTime: '20-30',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2', 'ingredient3', 'ingredient4', 'ingredient5'],
-        stars: 4.7,
-        imageUrl: './assets/pizza_argentina.png',
-        tags: ['SlowFood', 'Lunch'],
-      },
-      {
-        id: 21,
-        name: 'Pizza Carnivor',
-        price: 5,
-        cookTime: '10-15',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.5,
-        imageUrl: './assets/pizza_carnivor.png',
-        tags: ['FastFood', 'Hamburger'],
-      },
-      {
-        id: 22,
-        name: 'Pizza Clasic',
-        price: 2,
-        cookTime: '15-20',
-        favorite: true,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.3,
-        imageUrl: './assets/pizza_clasic.png',
-        tags: ['FastFood', 'Fry'],
-      },
-      {
-        id: 23,
-        name: 'Pizza Double Pepperoni',
-        price: 11,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1', 'ingredient2'],
-        stars: 3.0,
-        imageUrl: './assets/pizza_double_pepperoni.png',
-        tags: ['SlowFood', 'Soup'],
-      },
-      {
-        id: 24,
-        name: 'Pizza Rustic',
-        price: 9,
-        cookTime: '40-50',
-        favorite: false,
-        ingredients: ['ingredient1'],
-        stars: 4.0,
-        imageUrl: './assets/pizza_rustic.png',
-        tags: ['FastFood', 'Pizza', 'Lunch'],
-      },
-    ];
+    if(this.foods.length == 0)
+    this.testRequest();
+    return this.foods;
   }
   
   getAllTag():Tag[] {
@@ -298,7 +36,6 @@ export class FoodService {
   }
 
   getAllFoodByTag(tag: string): Food[] {
-    this.testRequest();
     return tag=="All" ? 
       this.getAll() : 
         this.getAll().filter(food => food.tags?.includes(tag));
@@ -313,9 +50,46 @@ export class FoodService {
     return this.getAll().find(food => food.id == id)!;
   }
 
-  testRequest() {
-    this.posts = this.http.get<Food[]>(this.ROOT_URL + '/api/food/get-all-food')
-    console.log(this.posts);
+  private testRequest() {
+    this.http.get(this.ROOT_URL + "/api/food/get-all-food-test")
+    .pipe(
+      map(response => {
+        const responseArray = [];
+        for(const key in response) {
+          
+          if(response.hasOwnProperty(key)){
+
+            let ingredients = [];
+            for(let i=0; i<response[key].ingredients.length; i++) {
+              ingredients.push(response[key].ingredients[i].name);
+            }
+
+            let tags = [];
+            for(let i=0; i<response[key].tags.length; i++) {
+              tags.push(response[key].tags[i].name);
+            }
+
+            let myImage = this._sanitizer
+            .bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + response[key].image)
+
+            responseArray.push({
+              id: key, 
+              cookTime: response[key].cookTime, 
+              name: response[key].name,
+              ingredients: ingredients,
+              tags: tags,
+              price: response[key].price,
+              imageUrl: myImage
+            })
+          
+          }
+        }
+        return responseArray
+      })
+    )
+    .subscribe(response => {
+      this.foods = response;
+    })
   }
 
 }

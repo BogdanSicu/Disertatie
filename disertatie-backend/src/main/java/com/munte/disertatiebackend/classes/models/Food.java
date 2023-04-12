@@ -27,14 +27,14 @@ public class Food {
     private Double price;
 
     @Column(name = "cooking_time")
-    private Long timeToCook;
+    private Long cookTime;
 
-    public Long getTimeToCook() {
-        return timeToCook;
+    public Long getCookTime() {
+        return cookTime;
     }
 
-    public void setTimeToCook(Long timeToCook) {
-        this.timeToCook = timeToCook;
+    public void setCookTime(Long timeToCook) {
+        this.cookTime = timeToCook;
     }
 
     @JsonIgnore
