@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Food } from 'src/app/shared/models/Food';
-import { Tag } from 'src/app/shared/models/Tag';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
@@ -11,57 +10,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FoodService {
 
   readonly ROOT_URL = 'http://localhost:8080';
-  private foods: Food[] = [];
 
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer) { }
-  
-  getAllTag():Tag[] {
-    // numarul trebuie calculat pe server - cate mancaruri au tagurile respective
-    return [
-      {name: 'All', count: 14},
-      {name: 'FastFood', count: 4},
-      {name: 'Pizza', count: 2},
-      {name: 'Lunch', count: 3},
-      {name: 'SlowFood', count: 2},
-      {name: 'Hamburger', count: 1},
-      {name: 'Fry', count: 1},
-      {name: 'Soup', count: 1},
-    ];
-  }
-
-  // getAllFoodByTag(tag: string): Food[] {
-  //   return tag=="All" ? 
-  //     this.getAll() : 
-  //       this.getAll().filter(food => food.tags?.includes(tag));
-  // }
-
-  // getAllFoodsBySearchTerm(searchTerm: string): Food[] {
-  //   return this.getAll()
-  //               .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
-  // }
-
-  // getFoodById(id: number): Food {
-  //   return this.getAll().find(food => food.id == id)!;
-  // }
 
   getAllFoodByTag(tag: string, foods: Food[]): Food[] {
-    this.foods = foods;
     return tag=="All" ? 
       foods : 
         foods.filter(food => food.tags?.includes(tag));
   }
 
   getAllFoodsBySearchTerm(searchTerm: string, foods: Food[]): Food[] {
-    this.foods = foods;
     return foods
                 .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
-  getFoodById(id: number): Food {
-    return this.foods.find(food => food.id == id)!;
-  }
-
-  testRequest(): Observable<Food[]> {
+  GetAllFoodRequest(): Observable<Food[]> {
     return this.http.get(this.ROOT_URL + "/api/food/get-all-food-test")
     .pipe(
       map(response => {

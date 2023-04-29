@@ -8,6 +8,8 @@ import com.munte.disertatiebackend.repositories.TagsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FoodTagsServiceImplementation implements FoodTagsService{
 
@@ -29,5 +31,10 @@ public class FoodTagsServiceImplementation implements FoodTagsService{
             foodTags.setId(new FoodTagsKeyBuilder().addFoodId(foodId).addTagsId(tagId).build());
             foodTagsRepository.save(foodTags);
         }
+    }
+
+    @Override
+    public List<FoodTags> getAllRelations() {
+        return foodTagsRepository.findAll().stream().toList();
     }
 }

@@ -80,13 +80,14 @@ public class DefaultDbDataConfiguration {
         return args -> {
             FoodTags pizza_all_cheese_tag = new FoodTags();
 
-//            pizza_all_cheese_tag.setFood(foodRepository.findAll().stream().filter(food -> food.getName().equals("Pizza All Cheese")).toList().get(0));
-//            pizza_all_cheese_tag.setTags(tagsRepository.findAll().stream().filter(tags -> tags.getName().equals("Pizza")).toList().get(0));
-//            pizza_all_cheese_tag.setId(new FoodTagsKeyBuilder().addFoodId(pizza_all_cheese_tag.getFood().getId()).addTagsId(pizza_all_cheese_tag.getTags().getId()).build());
-
-
             pizza_all_cheese_tag.setId(new FoodTagsKeyBuilder().addFoodId(1L).addTagsId(1L).build());
+
+            FoodTags pizza_argentina = new FoodTags();
+
+            pizza_argentina.setId(new FoodTagsKeyBuilder().addFoodId(2L).addTagsId(1L).build());
+
             foodTagsRepository.save(pizza_all_cheese_tag);
+            foodTagsRepository.save(pizza_argentina);
         };
     }
 
