@@ -41,16 +41,15 @@ export class HomeComponent implements OnInit {
         } else if(params['tag']) {
           this.foods = this.foodService.getAllFoodByTag(params['tag'], this.baseFoods);
         } else {
-          this.foods = this.baseFoods;
+            this.foods = this.baseFoods;
         }
-        console.log(this.foods)
       }
     )
   }
 
   getAllFoods() {
     this.isLoaded = true;
-    this.foodService.GetAllFoodRequest().subscribe( response => {
+    this.foodService.getAllFoodRequest().subscribe( response => {
       this.baseFoods = response;
       this.foods = response;
       this.isLoaded = false;

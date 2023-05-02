@@ -24,7 +24,7 @@ export class FoodService {
                 .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
-  GetAllFoodRequest(): Observable<Food[]> {
+  getAllFoodRequest(): Observable<Food[]> {
     return this.http.get(this.ROOT_URL + "/api/food/get-all-food-test")
     .pipe(
       map(response => {

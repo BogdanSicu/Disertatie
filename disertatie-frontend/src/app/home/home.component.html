@@ -1,6 +1,6 @@
 <app-search></app-search>
 <app-tags></app-tags>
-<div *ngIf="!isLoaded">
+<!-- <div *ngIf="!isLoaded"> -->
     <ul>
         <li *ngFor="let food of foods">
             <a routerLink="/food/{{food.name}}">
@@ -34,4 +34,4 @@
             </a>
         </li>
     </ul>
-</div>
+<!-- </div> -->

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { FoodPageComponent } from './food-page/food-page.component';
 import { HomeComponent } from './home/home.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 const routes: Routes = [
   {
@@ -11,10 +12,13 @@ const routes: Routes = [
     path:'search/:searchTerm', component: HomeComponent
   },
   {
-    path: 'tag/:tag', component:HomeComponent
+    path: 'tag/:tag', component: HomeComponent
   },
   {
-    path: 'food/:name', component:FoodPageComponent
+    path: 'food/:name', component: FoodPageComponent
+  },
+  {
+    path: 'cart-page', component: CartPageComponent
   }
 ];
 
