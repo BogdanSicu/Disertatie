@@ -50,9 +50,11 @@ export class HomeComponent implements OnInit {
   getAllFoods() {
     this.isLoaded = true;
     this.foodService.getAllFoodRequest().subscribe( response => {
-      this.baseFoods = response;
-      this.foods = response;
-      this.isLoaded = false;
+      if(this.baseFoods.length < 1) {
+        this.baseFoods = response;
+        this.foods = response;
+        this.isLoaded = false;
+      }
     })
   }
 

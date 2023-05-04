@@ -20,7 +20,7 @@ export class FoodService {
   }
 
   getAllFoodsBySearchTerm(searchTerm: string, foods: Food[]): Food[] {
-    return foods
+    return searchTerm.length < 1 ? foods : foods
                 .filter( food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 
@@ -55,6 +55,7 @@ export class FoodService {
           
           }
         }
+        console.log("Request observable");
         return responseArray
       })
     )

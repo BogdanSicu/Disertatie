@@ -21,10 +21,13 @@ export class CartService {
 
     this.cart.items.push(new CartItem(food));
     console.log(this.cart);
+
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   removeFromCart(foodName: string): void {
     this.cart.items = this.cart.items.filter(item => item.food.name != foodName);
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   changeQuantity(foodName: string, quantity: number) {
@@ -35,10 +38,13 @@ export class CartService {
     }
 
     cartItem.quantity = quantity;
+    localStorage.setItem("cart", JSON.stringify(this.cart));
     console.log(this.cart);
   }
 
   getCart(): Cart {
+    console.log(localStorage.getItem("cart"));
+    this.cart = JSON.parse(localStorage.getItem("cart"));
     return this.cart;
   }
 }

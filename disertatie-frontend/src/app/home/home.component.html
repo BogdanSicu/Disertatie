@@ -4,6 +4,7 @@
 resetLinkText = "Reset Search!">
 
 </app-not-found>
+<div *ngIf="foods">
     <ul>
         <li *ngFor="let food of foods">
             <a routerLink="/food/{{food.name}}">
@@ -37,3 +38,4 @@ resetLinkText = "Reset Search!">
             </a>
         </li>
     </ul>
+</div>

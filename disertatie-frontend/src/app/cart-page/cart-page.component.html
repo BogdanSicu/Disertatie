@@ -9,7 +9,7 @@ resetLinkText="Go to Homepage">
     <ul>
         <li *ngFor="let cartItem of cart.items">
             <div>
-                <img [src] = "cartItem.food.imageUrl" [alt]="cartItem.food.name">
+                <img src = "http://localhost:8080/media/images/{{cartItem.food.imageUrl}}" [alt]="cartItem.food.name">
             </div>
             <div>
                 <a routerLink = "/food/{{cartItem.food.name}}">
