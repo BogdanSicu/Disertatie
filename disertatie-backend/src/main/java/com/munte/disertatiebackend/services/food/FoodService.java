@@ -1,16 +1,14 @@
 package com.munte.disertatiebackend.services.food;
 
-import com.munte.disertatiebackend.classes.dtos.FoodDTO;
-import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.dtos.FoodReceiveDTO;
+import com.munte.disertatiebackend.classes.dtos.FoodSendDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface FoodService {
-    public List<Food> getAllFood();
+    public List<FoodSendDTO> getAllFood();
 
-    public List<FoodDTO> getAllFoodTEST();
-
-    public ResponseEntity<String> saveNewFood(FoodDTO foodDto);
-    public FoodDTO getFoodByName(String foodName);
+    public ResponseEntity<String> saveNewFood(FoodReceiveDTO foodReceiveDto);
+    public FoodSendDTO getFoodByName(String foodName);
 }

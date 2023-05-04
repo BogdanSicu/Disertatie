@@ -43,9 +43,6 @@ export class FoodService {
               responseTags.push(response[key].tags[i].name);
             }
 
-            let myImage = this._sanitizer
-            .bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + response[key].image)
-
             responseArray.push({
               id: key, 
               cookTime: response[key].cookTime, 
@@ -53,7 +50,7 @@ export class FoodService {
               ingredients: responseIngredients,
               tags: responseTags,
               price: response[key].price,
-              imageUrl: myImage
+              imageUrl: response[key].image
             })
           
           }
@@ -81,11 +78,8 @@ export class FoodService {
         for(let i=0; i<response['tags'].length; i++) {
           responseTags.push(response['tags'][i].name);
         }
-
-        let myImage = this._sanitizer
-            .bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + response['image'])
         
-        food.imageUrl = myImage;
+        food.imageUrl = response['image'];
         food.cookTime = response['cookTime'];
         food.ingredients = responseIngredients;
         food.tags = responseTags;

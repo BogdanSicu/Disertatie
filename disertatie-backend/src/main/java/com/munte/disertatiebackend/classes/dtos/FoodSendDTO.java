@@ -2,21 +2,13 @@ package com.munte.disertatiebackend.classes.dtos;
 
 import java.util.List;
 
-public class FoodDTO {
+public class FoodSendDTO {
     private String name;
     private Double price;
     private List<TagsDTO> tags;
     private List<IngredientsDTO> ingredients;
-    private byte[] image;
+    private String image;
     private Long cookTime;
-
-    public Long getCookTime() {
-        return cookTime;
-    }
-
-    public void setCookTime(Long timeToCook) {
-        this.cookTime = timeToCook;
-    }
 
     public String getName() {
         return name;
@@ -50,11 +42,19 @@ public class FoodDTO {
         this.ingredients = ingredients;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getCookTime() {
+        return cookTime;
+    }
+
+    public void setCookTime(Long cookTime) {
+        this.cookTime = cookTime;
     }
 }

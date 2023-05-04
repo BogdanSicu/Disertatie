@@ -1,10 +1,10 @@
 package com.munte.disertatiebackend.mappers;
 
 /*
-    T - the DTO class
-    Y - the model class
+    D - the DTO class
+    M - the model class
  */
-public interface Mapper<T, Y> {
-    public T toDTO(Y model);
-    public Y toModel(T dto);
+public interface Mapper<D, M> {
+    public D toDTO(M model);
+    public M toModel(D dto);
 }

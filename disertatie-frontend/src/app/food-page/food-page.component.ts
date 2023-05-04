@@ -13,6 +13,7 @@ export class FoodPageComponent implements OnInit {
 
   food!: Food;
   isLoaded: Boolean = false;
+  foodImage: string = "pizza_all_cheese.png";
 
   constructor(private foodService: FoodService,
               private activatedRoute: ActivatedRoute,

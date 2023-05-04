@@ -1,6 +1,5 @@
 <div *ngIf = "!isLoaded" class="container">
-    <img [src]="food.imageUrl" [alt]="food.name">
-
+    <img src="http://localhost:8080/media/images/{{food.imageUrl}}" [alt]="food.name">
     <div class="details">
         <div class="header">
             <span class="name">
