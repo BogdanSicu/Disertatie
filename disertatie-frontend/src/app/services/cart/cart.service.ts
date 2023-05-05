@@ -15,18 +15,23 @@ export class CartService {
 
     if(cartItem) {
       this.changeQuantity(food.name, cartItem.quantity + 1);
-      console.log(this.cart);
       return;
     }
 
-    this.cart.items.push(new CartItem(food));
-    console.log(this.cart);
+    let newItem = new CartItem(food);
+    newItem.setTotalPrice();
+
+    this.cart.items.push(newItem);
 
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   removeFromCart(foodName: string): void {
     this.cart.items = this.cart.items.filter(item => item.food.name != foodName);
+    this.cart.totalPrice = 0;
+    this.cart.items.forEach(element => {
+      this.cart.totalPrice += element.price;
+    });
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
@@ -38,13 +43,22 @@ export class CartService {
     }
 
     cartItem.quantity = quantity;
+    cartItem.price = cartItem.food.price * cartItem.quantity
+    // cartItem.setTotalPrice(); -> because TS is JS with types and JS is stupid
+    this.cart.totalPrice = 0;
+    this.cart.items.forEach(element => {
+      this.cart.totalPrice += element.price;
+    });
     localStorage.setItem("cart", JSON.stringify(this.cart));
-    console.log(this.cart);
   }
 
   getCart(): Cart {
-    console.log(localStorage.getItem("cart"));
     this.cart = JSON.parse(localStorage.getItem("cart"));
+    // this.cart.setTotalPrice(); -> because JS is stupid
+    this.cart.totalPrice = 0;
+    this.cart.items.forEach(element => {
+      this.cart.totalPrice += element.price;
+    });
     return this.cart;
   }
 }

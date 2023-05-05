@@ -4,13 +4,13 @@ export class CartItem {
 
     food: Food;
     quantity: number = 1;
+    price: number = 0;
 
     constructor(food: Food) {
         this.food = food;
     }
 
-    // getter
-    get price(): number {
-        return this.food.price * this.quantity;
+    public setTotalPrice() {
+        this.price = this.food.price * this.quantity;
     }
 }
