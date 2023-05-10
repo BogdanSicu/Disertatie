@@ -11,7 +11,8 @@ import { TagsComponent } from './tags/tags.component';
 import { FoodPageComponent } from './food-page/food-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartPageComponent } from './cart-page/cart-page.component';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginRegisterComponent } from './login-register/login-register.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component'
     TagsComponent,
     FoodPageComponent,
     CartPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,

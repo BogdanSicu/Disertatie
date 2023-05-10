@@ -149,8 +149,8 @@ public class DefaultDbDataConfiguration {
 
             Orders orders = new Orders();
 
-            orders.setUser(usersRepository.findUsereById(1L));
-            orders.setAddress(usersRepository.findUsereById(1L).getAddress());
+            orders.setUser(usersRepository.findUserById(1L));
+            orders.setAddress(usersRepository.findUserById(1L).getAddress());
             orders.setTotalPrice(30.5);
 
             ordersRepository.save(orders);

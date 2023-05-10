@@ -3,6 +3,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { FoodPageComponent } from './food-page/food-page.component';
 import { HomeComponent } from './home/home.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
   },
   {
     path: 'cart-page', component: CartPageComponent
+  },
+  {
+    path: 'login', component: LoginRegisterComponent
   }
 ];
 

@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.services.food;
 
-import com.munte.disertatiebackend.classes.dtos.FoodReceiveDTO;
-import com.munte.disertatiebackend.classes.dtos.FoodSendDTO;
+import com.munte.disertatiebackend.classes.dtos.fooddto.FoodReceiveDTO;
+import com.munte.disertatiebackend.classes.dtos.fooddto.FoodSendDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

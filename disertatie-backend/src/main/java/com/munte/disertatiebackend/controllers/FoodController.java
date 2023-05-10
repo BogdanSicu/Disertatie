@@ -1,14 +1,12 @@
 package com.munte.disertatiebackend.controllers;
 
-import com.munte.disertatiebackend.classes.dtos.FoodReceiveDTO;
-import com.munte.disertatiebackend.classes.dtos.FoodSendDTO;
-import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.dtos.fooddto.FoodReceiveDTO;
+import com.munte.disertatiebackend.classes.dtos.fooddto.FoodSendDTO;
 import com.munte.disertatiebackend.services.food.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
