@@ -2,9 +2,10 @@ package com.munte.disertatiebackend.mappers;
 
 import com.munte.disertatiebackend.classes.dtos.IngredientsDTO;
 import com.munte.disertatiebackend.classes.models.Ingredients;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class IngredientsMapper implements Mapper<IngredientsDTO, Ingredients> {
 
     public IngredientsDTO toDTO(Ingredients ingredient) {

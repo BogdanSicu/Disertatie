@@ -3,9 +3,10 @@ package com.munte.disertatiebackend.mappers.food;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodReceiveDTO;
 import com.munte.disertatiebackend.classes.models.Food;
 import com.munte.disertatiebackend.mappers.Mapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class FoodReceiveMapper implements Mapper<FoodReceiveDTO, Food> {
 
     @Override

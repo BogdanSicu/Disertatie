@@ -5,9 +5,10 @@ import com.munte.disertatiebackend.classes.dtos.usersdto.UserSendDTO;
 import com.munte.disertatiebackend.mappers.Mapper;
 import com.munte.disertatiebackend.repositories.RolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class UserRegisterToSendMapper implements Mapper<UserSendDTO, UserRegisterDTO> {
 
     private final RolesRepository rolesRepository;

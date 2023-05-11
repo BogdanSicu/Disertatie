@@ -4,9 +4,10 @@ import com.munte.disertatiebackend.classes.dtos.addressdto.AddressDTO;
 import com.munte.disertatiebackend.classes.dtos.addressdto.AddressDTOBuilder;
 import com.munte.disertatiebackend.classes.models.addresses.Addresses;
 import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class AddressMapper implements Mapper<AddressDTO, Addresses>{
     public AddressDTO toDTO(Addresses addresses) {
         AddressDTOBuilder addressDTOBuilder = new AddressDTOBuilder();

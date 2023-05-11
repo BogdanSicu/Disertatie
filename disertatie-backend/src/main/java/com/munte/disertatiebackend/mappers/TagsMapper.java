@@ -2,9 +2,10 @@ package com.munte.disertatiebackend.mappers;
 
 import com.munte.disertatiebackend.classes.dtos.TagsDTO;
 import com.munte.disertatiebackend.classes.models.Tags;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class TagsMapper implements Mapper<TagsDTO, Tags>{
     @Override
     public TagsDTO toDTO(Tags model) {

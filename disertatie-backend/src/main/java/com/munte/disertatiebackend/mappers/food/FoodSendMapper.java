@@ -9,11 +9,12 @@ import com.munte.disertatiebackend.classes.models.Tags;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodTags;
 import com.munte.disertatiebackend.mappers.Mapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
+@Component
 public class FoodSendMapper implements Mapper<FoodSendDTO, Food> {
 
     private final Mapper<IngredientsDTO, Ingredients> ingredientsMapper;

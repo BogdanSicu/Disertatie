@@ -5,11 +5,12 @@ import com.munte.disertatiebackend.classes.models.Users;
 import com.munte.disertatiebackend.mappers.Mapper;
 import com.munte.disertatiebackend.repositories.RolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Pattern;
 
-@Service
+@Component
 public class UserRegisterMapper implements Mapper<UserRegisterDTO, Users> {
 
     private final RolesRepository rolesRepository;
