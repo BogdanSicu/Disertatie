@@ -1,5 +1,6 @@
 package com.munte.disertatiebackend.utility;
 
+import com.munte.disertatiebackend.classes.dtos.usersdto.UserSendDTO;
 import com.munte.disertatiebackend.classes.models.Users;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -15,10 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JWTUtility implements Serializable {
-    private static final long serialVersionUID = 234234523523L;
-
-    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-
+    public static final long JWT_TOKEN_VALIDITY = 60 * 60 * 24 * 30; // 60 seconds -> 60 minutes -> 24 hours -> 30 days
     @Value("${jwt.secret}")
     private String secretKey;
 
@@ -53,8 +51,9 @@ public class JWTUtility implements Serializable {
 
 
     //generate token for user
-    public String generateToken(Users userDetails) {
+    public String generateToken(UserSendDTO userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("1", userDetails);
         return doGenerateToken(claims, userDetails.getName());
     }
 

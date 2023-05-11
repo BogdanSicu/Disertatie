@@ -28,14 +28,4 @@ public class UserRegisterDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("UserRegisterDTO{");
-        sb.append("mail='").append(mail).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 }

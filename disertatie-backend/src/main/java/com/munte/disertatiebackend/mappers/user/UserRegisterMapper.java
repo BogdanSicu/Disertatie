@@ -13,7 +13,8 @@ import java.util.regex.Pattern;
 public class UserRegisterMapper implements Mapper<UserRegisterDTO, Users> {
 
     private final RolesRepository rolesRepository;
-    private final String regex = "^(.+)@(\\S+)$";
+    private final String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 
     @Autowired
     public UserRegisterMapper(RolesRepository rolesRepository) {
@@ -42,6 +43,6 @@ public class UserRegisterMapper implements Mapper<UserRegisterDTO, Users> {
             return newUser;
         }
 
-        else return null;
+        return null;
     }
 }
