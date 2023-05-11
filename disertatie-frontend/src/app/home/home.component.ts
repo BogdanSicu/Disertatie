@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FoodService } from '../services/food/food.service';
 import { Food } from '../shared/models/Food';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Observable, finalize, tap } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -31,33 +32,36 @@ export class HomeComponent implements OnInit {
       })
     }
 
-  ngOnInit(): void {
-    this.foodService.getFoodByNameRequest('Pizza All Cheese')
-    this.getAllFoods();
-    this.route.params.subscribe(
-      params => {
-        if(params['searchTerm']) {
-          this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm'], this.baseFoods);
-        } else if(params['tag']) {
-          this.foods = this.foodService.getAllFoodByTag(params['tag'], this.baseFoods);
-        } else {
-            this.foods = this.baseFoods;
+    ngOnInit(): void {
+      this.route.params.subscribe(
+        params => {
+          this.getAllFoods().subscribe(() => {
+            if(params['searchTerm']) {
+              this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm'], this.baseFoods);
+            } else if(params['tag']) {
+              this.foods = this.foodService.getAllFoodByTag(params['tag'], this.baseFoods);
+            } else {
+              this.foods = this.baseFoods;
+            }
+          });
         }
-      }
-    )
-  }
-
-  getAllFoods() {
-    this.isLoaded = true;
-    this.foodService.getAllFoodRequest().subscribe( response => {
-      if(this.baseFoods.length < 1) {
-        this.baseFoods = response;
-        this.foods = response;
-        this.isLoaded = false;
-      }
-    })
-  }
-
-
-
+      );
+    }
+    
+    getAllFoods(): Observable<any> {
+      this.isLoaded = true;
+      return this.foodService.getAllFoodRequest().pipe(
+        tap(response => {
+          if(this.baseFoods.length < 1) {
+            this.baseFoods = response;
+            this.foods = response;
+          }
+        }),
+        finalize(() => {
+          console.log(this.foods);
+          this.isLoaded = false;
+        })
+      );
+    }
+       
 }

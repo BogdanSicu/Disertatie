@@ -2,9 +2,9 @@
 <app-tags></app-tags>
 <app-not-found [visible]="!foods || foods.length <= 0"
 resetLinkText = "Reset Search!">
-
 </app-not-found>
-<div *ngIf="foods">
+
+<div *ngIf="!isLoaded">
     <ul>
         <li *ngFor="let food of foods">
             <a routerLink="/food/{{food.name}}">
