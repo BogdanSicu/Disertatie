@@ -47,7 +47,54 @@ resetLinkText="Go to Homepage">
         <div>
             <div class="food-count">{{cart.items.length}}</div>
             <div class="total-price">{{cart.totalPrice | currency}}</div>
-            <button class="order-button">Order</button>
+            <button class="order-button" (click)="order()">Order</button>
         </div>
     </div>
 </div>
+
+<div *ngIf="cart && cart.items.length > 0" class="wrapper">
+    <div class="title">
+      Address
+    </div>
+    <div class="form">
+       <div class="inputfield">
+          <label>Name</label>
+          <input type="text" class="input" [(ngModel)]="name">
+       </div>  
+        <div class="inputfield">
+          <label>Mail</label>
+          <input type="text" class="input" [(ngModel)]="mail">
+       </div>  
+       <div class="inputfield">
+          <label>Phone Number</label>
+          <input class="input" type="number" [(ngModel)]="phoneNumber"
+          onKeyPress="if(this.value.length==10) return false;" >
+       </div>  
+      <div class="inputfield">
+          <label>Country</label>
+          <input type="text" class="input" [(ngModel)]="country">
+       </div> 
+        <div class="inputfield">
+            <label>City</label>
+            <input type="text" class="input" [(ngModel)]="city">
+       </div> 
+       <div class="inputfield">
+            <label>Street</label>
+            <input type="text" class="input" [(ngModel)]="street">
+        </div> 
+        <div class="inputfield">
+            <label>Street Number</label>
+            <input class="input" type="number" [(ngModel)]="streetNumber"
+            onKeyPress="if(this.value.length==5) return false;">
+        </div> 
+        <div class="inputfield">
+            <label>Building</label>
+            <input type="text" class="input" [(ngModel)]="building">
+        </div> 
+        <div class="inputfield">
+            <label>Room</label>
+            <input class="input" type="number" [(ngModel)]="room"
+            onKeyPress="if(this.value.length==5) return false;">
+        </div> 
+    </div>
+</div>	
