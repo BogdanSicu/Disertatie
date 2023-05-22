@@ -46,12 +46,12 @@ public class AddressServiceImplementation implements AddressService{
 
         if(addressesRepository.findAll().stream()
                 .filter(x -> x.getCountry().equals(addressDTO.getCountry()) &&
-                        x.getCounty().equals(addressDTO.getCounty()) &&
+//                        x.getCounty().equals(addressDTO.getCounty()) &&
                         x.getCity().equals(addressDTO.getCity()) &&
                         x.getStreet().equals(addressDTO.getStreet()) &&
                         x.getStreetNumber().equals(addressDTO.getStreetNumber()) &&
                         x.getBuilding().equals(addressDTO.getBuilding()) &&
-                        x.getStaircase().equals(addressDTO.getStaircase()) &&
+//                        x.getStaircase().equals(addressDTO.getStaircase()) &&
                         x.getRoom().equals(addressDTO.getRoom())).toList().size() == 0) {
             addressesRepository.save(addressMapper.toModel(addressDTO));
             return ResponseEntity.ok("The address was created");

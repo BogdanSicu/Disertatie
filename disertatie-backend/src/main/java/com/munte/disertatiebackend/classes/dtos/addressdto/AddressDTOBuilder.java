@@ -8,12 +8,12 @@ public class AddressDTOBuilder {
     private AddressDTO addressDTO = new AddressDTO();
 
     private String country;
-    private String county;
+//    private String county;
     private String city;
     private String street;
     private Long streetNumber;
     private String building;
-    private String staircase;
+//    private String staircase;
     private Long room;
 
     public AddressDTOBuilder addCountry(String country) {
@@ -21,10 +21,10 @@ public class AddressDTOBuilder {
         return this;
     }
 
-    public AddressDTOBuilder addCounty(String county) {
-        addressDTO.setCounty(county);
-        return this;
-    }
+//    public AddressDTOBuilder addCounty(String county) {
+//        addressDTO.setCounty(county);
+//        return this;
+//    }
 
     public AddressDTOBuilder addCity(String city) {
         addressDTO.setCity(city);
@@ -46,10 +46,10 @@ public class AddressDTOBuilder {
         return this;
     }
 
-    public AddressDTOBuilder addStaircase(String staircase) {
-        addressDTO.setStaircase(staircase);
-        return this;
-    }
+//    public AddressDTOBuilder addStaircase(String staircase) {
+//        addressDTO.setStaircase(staircase);
+//        return this;
+//    }
 
     public AddressDTOBuilder addRoom(Long room) {
         addressDTO.setRoom(room);

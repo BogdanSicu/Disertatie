@@ -5,8 +5,8 @@ import com.sun.istack.NotNull;
 public class AddressDTO {
     @NotNull
     private String country;
-    @NotNull
-    private String county;
+//    @NotNull
+//    private String county;
     @NotNull
     private String city;
     @NotNull
@@ -14,7 +14,7 @@ public class AddressDTO {
     @NotNull
     private Long streetNumber;
     private String building = null;
-    private String staircase = null;
+//    private String staircase = null;
     private Long room = null;
 
     public String getCountry() {
@@ -24,14 +24,14 @@ public class AddressDTO {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
+//
+//    public String getCounty() {
+//        return county;
+//    }
+//
+//    public void setCounty(String county) {
+//        this.county = county;
+//    }
 
     public String getCity() {
         return city;
@@ -65,13 +65,13 @@ public class AddressDTO {
         this.building = building;
     }
 
-    public String getStaircase() {
-        return staircase;
-    }
-
-    public void setStaircase(String staircase) {
-        this.staircase = staircase;
-    }
+//    public String getStaircase() {
+//        return staircase;
+//    }
+//
+//    public void setStaircase(String staircase) {
+//        this.staircase = staircase;
+//    }
 
     public Long getRoom() {
         return room;

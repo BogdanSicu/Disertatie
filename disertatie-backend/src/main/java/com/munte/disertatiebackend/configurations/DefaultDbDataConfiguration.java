@@ -107,7 +107,12 @@ public class DefaultDbDataConfiguration {
     @Bean(name = "addresses-configuration")
     CommandLineRunner addDefaultAddresses(AddressesRepository addressesRepository) {
         return args -> {
-            Addresses address1 = new AddressesBuilder().addCountry("Romania").addCounty("Bucharest").addCity("Bucharest").addStreet("Bd. Timisoara").addStreetNumber(89L).addBuilding("C 1.3").addStaircase("A").addRoom(10L).build();
+            Addresses address1 = new AddressesBuilder().addCountry("Romania")
+//                    .addCounty("Bucharest")
+                    .addCity("Bucharest").addStreet("Bd. Timisoara")
+                    .addStreetNumber(89L).addBuilding("C 1.3")
+//                    .addStaircase("A")
+                    .addRoom(10L).build();
 
             addressesRepository.save(address1);
         };
@@ -123,7 +128,7 @@ public class DefaultDbDataConfiguration {
             admin.setPassword("1234");
             admin.setMail("admin_test@gmail.com");
 
-            admin.setAddress(addressesRepository.findAll().stream().filter(addresses -> addresses.getCity().equals("Bucharest") && addresses.getBuilding().equals("C 1.3") && addresses.getRoom() == 10L).toList().get(0));
+//            admin.setAddress(addressesRepository.findAll().stream().filter(addresses -> addresses.getCity().equals("Bucharest") && addresses.getBuilding().equals("C 1.3") && addresses.getRoom() == 10L).toList().get(0));
             admin.setRole(rolesRepository.findAll().stream().filter(role -> role.getName().equals("Admin")).toList().get(0));
 
             usersRepository.save(admin);
@@ -148,9 +153,9 @@ public class DefaultDbDataConfiguration {
         return args -> {
 
             Orders orders = new Orders();
-
-            orders.setUser(usersRepository.findUserById(1L));
-            orders.setAddress(usersRepository.findUserById(1L).getAddress());
+//
+//            orders.setUser(usersRepository.findUserById(1L));
+//            orders.setAddress(usersRepository.findUserById(1L).getAddress());
             orders.setTotalPrice(30.5);
 
             ordersRepository.save(orders);

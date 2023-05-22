@@ -20,9 +20,9 @@ public class Addresses {
     @Column(name = "country")
     @NotNull
     private String country;
-    @Column(name = "county")
-    @NotNull
-    private String county;
+//    @Column(name = "county")
+//    @NotNull
+//    private String county;
     @Column(name = "city")
     @NotNull
     private String city;
@@ -34,13 +34,13 @@ public class Addresses {
     private Long streetNumber;
     @Column(name = "building")
     private String building;
-    @Column(name = "staircase")
-    private String staircase;
+//    @Column(name = "staircase")
+//    private String staircase;
     @Column(name = "room")
     private Long room;
-    @JsonIgnore
-    @OneToMany(mappedBy = "address")
-    private Set<Users> users = new HashSet<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "address")
+//    private Set<Users> users = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "address")
@@ -102,29 +102,29 @@ public class Addresses {
         this.room = room;
     }
 
-    public String getCounty() {
-        return county;
-    }
+//    public String getCounty() {
+//        return county;
+//    }
+//
+//    public void setCounty(String county) {
+//        this.county = county;
+//    }
+//
+//    public String getStaircase() {
+//        return staircase;
+//    }
+//
+//    public void setStaircase(String staircase) {
+//        this.staircase = staircase;
+//    }
 
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public String getStaircase() {
-        return staircase;
-    }
-
-    public void setStaircase(String staircase) {
-        this.staircase = staircase;
-    }
-
-    public Set<Users> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<Users> users) {
-        this.users = users;
-    }
+//    public Set<Users> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<Users> users) {
+//        this.users = users;
+//    }
 
     public Set<Orders> getOrders() {
         return orders;

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart/cart.service';
 import { Cart } from '../shared/models/Cart';
 import { CartItem } from '../shared/models/CartItem';
+import { PizzaOrderDTO } from '../shared/models/PizzaOrderDTO';
+import { OrdersDTO } from '../shared/models/OrdersDTO';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart-page',
@@ -12,18 +15,11 @@ export class CartPageComponent implements OnInit {
 
   cart!: Cart;
 
-  name: String;
-  mail: String;
-  phoneNumber: String;
-  country: String;
-  city: String;
-  street: String;
-  streetNumber: Number;
-  building: String;
-  room: Number;
+  ordersDTO: OrdersDTO = new OrdersDTO();
 
+  readonly ROOT_URL = 'http://localhost:8080';
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private http: HttpClient) {
     this.setCart();
   }
 
@@ -46,15 +42,23 @@ export class CartPageComponent implements OnInit {
   }
 
   order() {
-    console.log(this.name);
-    console.log(this.mail);
-    console.log("0" + this.phoneNumber);
-    console.log(this.country);
-    console.log(this.city);
-    console.log(this.street);
-    console.log(this.streetNumber);
-    console.log(this.building);
-    console.log(this.room);
+    for(let i = 0; i<this.cart.items.length; i++) {
+      let requestPizza: PizzaOrderDTO = new PizzaOrderDTO();
+      requestPizza.name = this.cart.items[i].food.name;
+      requestPizza.quantity = this.cart.items[i].quantity;
+
+      this.ordersDTO.pizzaOrderDTO.push(requestPizza);
+    }
+
+    this.ordersDTO.totalPrice = this.cart.totalPrice;
+
+    console.log(this.ordersDTO);
+    this.orderRequest();
+    this.ordersDTO =  new OrdersDTO();
+  }
+
+  orderRequest() {
+    return this.http.post(this.ROOT_URL + "/api/orders/order-food", this.ordersDTO).subscribe();
   }
 
 }

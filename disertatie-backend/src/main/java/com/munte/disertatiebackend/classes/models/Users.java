@@ -32,12 +32,12 @@ public class Users {
     @OneToMany(mappedBy = "user")
     private Set<FavouriteFoods> favouriteFoods = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Addresses address;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Orders> orders = new HashSet<>();
+//    @ManyToOne
+//    @JoinColumn(name = "address_id", referencedColumnName = "id")
+//    private Addresses address;
+//
+//    @OneToMany(mappedBy = "user")
+//    private Set<Orders> orders = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -87,19 +87,19 @@ public class Users {
         this.favouriteFoods = favouriteFoods;
     }
 
-    public Addresses getAddress() {
-        return address;
-    }
-
-    public void setAddress(Addresses address) {
-        this.address = address;
-    }
-
-    public Set<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Orders> orders) {
-        this.orders = orders;
-    }
+//    public Addresses getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Addresses address) {
+//        this.address = address;
+//    }
+//
+//    public Set<Orders> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Set<Orders> orders) {
+//        this.orders = orders;
+//    }
 }

@@ -13,12 +13,12 @@ public class AddressMapper implements Mapper<AddressDTO, Addresses>{
         AddressDTOBuilder addressDTOBuilder = new AddressDTOBuilder();
         return addressDTOBuilder
                 .addCountry(addresses.getCountry())
-                .addCounty(addresses.getCounty())
+//                .addCounty(addresses.getCounty())
                 .addCity(addresses.getCity())
                 .addStreet(addresses.getStreet())
                 .addStreetNumber(addresses.getStreetNumber())
                 .addBuilding(addresses.getBuilding())
-                .addStaircase(addresses.getStaircase())
+//                .addStaircase(addresses.getStaircase())
                 .addRoom(addresses.getRoom()).build();
     }
 
@@ -26,12 +26,12 @@ public class AddressMapper implements Mapper<AddressDTO, Addresses>{
         AddressesBuilder addressesBuilder = new AddressesBuilder();
         return addressesBuilder
                 .addCountry(addressDTO.getCountry())
-                .addCounty(addressDTO.getCounty())
+//                .addCounty(addressDTO.getCounty())
                 .addCity(addressDTO.getCity())
                 .addStreet(addressDTO.getStreet())
                 .addStreetNumber(addressDTO.getStreetNumber())
                 .addBuilding(addressDTO.getBuilding())
-                .addStaircase(addressDTO.getStaircase())
+//                .addStaircase(addressDTO.getStaircase())
                 .addRoom(addressDTO.getRoom()).build();
     }
 }
