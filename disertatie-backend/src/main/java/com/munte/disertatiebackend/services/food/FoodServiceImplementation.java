@@ -1,5 +1,6 @@
 package com.munte.disertatiebackend.services.food;
 
+import com.munte.disertatiebackend.classes.dtos.ChartData;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodReceiveDTO;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodSendDTO;
 import com.munte.disertatiebackend.classes.dtos.IngredientsDTO;
@@ -78,6 +79,11 @@ public class FoodServiceImplementation implements FoodService{
             return foodSendMapper.toDTO(food);
         }
         return null;
+    }
+
+    @Override
+    public List<ChartData> getChartData() {
+        return foodRepository.getChartData();
     }
 
     private void savePicture(String path, byte[] image) {

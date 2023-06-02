@@ -1,7 +1,9 @@
 package com.munte.disertatiebackend.controllers;
 
+import com.munte.disertatiebackend.classes.dtos.ChartData;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodReceiveDTO;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodSendDTO;
+import com.munte.disertatiebackend.repositories.FoodRepository;
 import com.munte.disertatiebackend.services.food.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +35,10 @@ public class FoodController {
     @PostMapping("save-food")
     public ResponseEntity<String> saveFood(@RequestBody FoodReceiveDTO foodReceiveDto) {
         return foodService.saveNewFood(foodReceiveDto);
+    }
+
+    @GetMapping("get-chart-data")
+    public List<ChartData> getAllChartData() {
+        return foodService.getChartData();
     }
 }

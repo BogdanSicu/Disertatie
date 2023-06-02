@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
           }
         }),
         finalize(() => {
-          console.log(this.foods);
           this.isLoaded = false;
         })
       );

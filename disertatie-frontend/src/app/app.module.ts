@@ -12,7 +12,8 @@ import { FoodPageComponent } from './food-page/food-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginRegisterComponent } from './login-register/login-register.component'
+import { LoginRegisterComponent } from './login-register/login-register.component';
+import { GraphsComponent } from './graphs/graphs.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     FoodPageComponent,
     CartPageComponent,
     NotFoundComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    GraphsComponent
   ],
   imports: [
     BrowserModule,
