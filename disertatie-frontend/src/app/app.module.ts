@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
-import { GraphsComponent } from './graphs/graphs.component'
+import { GraphsComponent } from './graphs/graphs.component';
+import { ContactPageComponent } from './contact-page/contact-page.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GraphsComponent } from './graphs/graphs.component'
     CartPageComponent,
     NotFoundComponent,
     LoginRegisterComponent,
-    GraphsComponent
+    GraphsComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,

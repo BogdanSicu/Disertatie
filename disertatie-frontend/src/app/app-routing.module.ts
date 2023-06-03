@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { GraphsComponent } from './graphs/graphs.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,9 @@ const routes: Routes = [
   // }
   {
     path: "recommendations", component: GraphsComponent
+  },
+  {
+    path: "contact-page", component: ContactPageComponent
   }
 ];
 
