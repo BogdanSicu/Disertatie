@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .wrapper{
     max-width: 1000px;
     width: 100%;
@@ -39,11 +40,10 @@ img {
     margin-left: 1rem;
 }
 
-
 span {
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
-span i {
+i {
     color: #e72929;
 }
