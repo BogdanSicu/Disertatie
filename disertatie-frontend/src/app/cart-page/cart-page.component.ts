@@ -19,7 +19,8 @@ export class CartPageComponent implements OnInit {
 
   readonly ROOT_URL = 'http://localhost:8080';
 
-  constructor(private cartService: CartService, private http: HttpClient) {
+  constructor(private cartService: CartService, 
+              private http: HttpClient) {
     this.setCart();
   }
 
@@ -56,7 +57,7 @@ export class CartPageComponent implements OnInit {
     this.orderRequest();
     this.ordersDTO =  new OrdersDTO();
     this.cart = new Cart();
-
+    alert("Comanda a fost inregistrata");
   }
 
   orderRequest() {
