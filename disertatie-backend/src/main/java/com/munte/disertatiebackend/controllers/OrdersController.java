@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.controllers;
 
 import com.munte.disertatiebackend.classes.dtos.ordersdto.OrdersDTO;
-import com.munte.disertatiebackend.classes.models.Orders;
+import com.munte.disertatiebackend.classes.models.orders.Orders;
 import com.munte.disertatiebackend.services.orders.OrdersService;
 import com.munte.disertatiebackend.services.orders.OrdersServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;

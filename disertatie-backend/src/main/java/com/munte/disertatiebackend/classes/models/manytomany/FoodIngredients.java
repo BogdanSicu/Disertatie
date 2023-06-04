@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.classes.models.manytomany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.models.foods.Food;
 import com.munte.disertatiebackend.classes.models.Ingredients;
 import com.munte.disertatiebackend.classes.models.manytomany.compositekeys.foodingredientskey.FoodIngredientsKey;
 

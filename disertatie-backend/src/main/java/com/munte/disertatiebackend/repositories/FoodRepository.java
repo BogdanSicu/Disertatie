@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.repositories;
 
 import com.munte.disertatiebackend.classes.dtos.ChartData;
-import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.models.foods.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

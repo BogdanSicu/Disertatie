@@ -1,8 +1,7 @@
 package com.munte.disertatiebackend.classes.models.addresses;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.munte.disertatiebackend.classes.models.Orders;
-import com.munte.disertatiebackend.classes.models.Users;
+import com.munte.disertatiebackend.classes.models.orders.Orders;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;

@@ -30,6 +30,8 @@ public class AddressServiceImplementation implements AddressService{
         for(Addresses address : addressesRepository.findAll().stream().toList()) {
             listDTO.add(addressMapper.toDTO(address));
         }
+
+        this.addressesRepository.findById(1L);
         return listDTO;
     }
 

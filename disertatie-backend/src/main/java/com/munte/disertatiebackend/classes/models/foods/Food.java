@@ -1,4 +1,4 @@
-package com.munte.disertatiebackend.classes.models;
+package com.munte.disertatiebackend.classes.models.foods;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.munte.disertatiebackend.classes.models.manytomany.FavouriteFoods;

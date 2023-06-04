@@ -1,7 +1,7 @@
 
 <app-not-found [visible]="!cart || cart.items.length <= 0" 
-notFoundMessage="Cart Page is Empty!"
-resetLinkText="Go to Homepage">
+notFoundMessage="Nu ai nimic in cos!"
+resetLinkText="Pagina principala">
 
 </app-not-found>
 
@@ -33,11 +33,11 @@ resetLinkText="Go to Homepage">
             </div>
 
             <div>
-                {{cartItem.price | currency}}
+                {{cartItem.price}} lei
             </div>
             <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">
-                    Remove
+                    Sterge
                 </button>
             </div>
         </li>
@@ -46,53 +46,53 @@ resetLinkText="Go to Homepage">
     <div class="checkout">
         <div>
             <div class="food-count">{{cart.items.length}}</div>
-            <div class="total-price">{{cart.totalPrice | currency}}</div>
-            <button class="order-button" (click)="order()">Order</button>
+            <div class="total-price">{{cart.totalPrice}} lei</div>
+            <button class="order-button" (click)="order()">Comanda</button>
         </div>
     </div>
 </div>
 
 <div *ngIf="cart && cart.items.length > 0" class="wrapper">
     <div class="title">
-      Address
+      Adresa pentru livrare
     </div>
     <div class="form">
        <div class="inputfield">
-          <label>Name</label>
+          <label>Nume*</label>
           <input type="text" class="input" [(ngModel)]="this.ordersDTO.userName">
        </div>  
         <div class="inputfield">
-          <label>Mail</label>
+          <label>Mail*</label>
           <input type="text" class="input" [(ngModel)]="this.ordersDTO.mail">
        </div>  
        <div class="inputfield">
-          <label>Phone Number</label>
+          <label>Numar Telefon*</label>
           <input class="input" type="number" [(ngModel)]="this.ordersDTO.phoneNumber"
           onKeyPress="if(this.value.length==10) return false;" >
        </div>  
       <div class="inputfield">
-          <label>Country</label>
+          <label>Tara</label>
           <input type="text" class="input" [(ngModel)]="this.ordersDTO.addressDTO.country">
        </div> 
         <div class="inputfield">
-            <label>City</label>
+            <label>Oras</label>
             <input type="text" class="input" [(ngModel)]="this.ordersDTO.addressDTO.city">
        </div> 
        <div class="inputfield">
-            <label>Street</label>
+            <label>Strada*</label>
             <input type="text" class="input" [(ngModel)]="this.ordersDTO.addressDTO.street">
         </div> 
         <div class="inputfield">
-            <label>Street Number</label>
+            <label>Numarul Strazii*</label>
             <input class="input" type="number" [(ngModel)]="this.ordersDTO.addressDTO.streetNumber"
             onKeyPress="if(this.value.length==5) return false;">
         </div> 
         <div class="inputfield">
-            <label>Building</label>
+            <label>Bloc</label>
             <input type="text" class="input" [(ngModel)]="this.ordersDTO.addressDTO.building">
         </div> 
         <div class="inputfield">
-            <label>Room</label>
+            <label>Apartament</label>
             <input class="input" type="number" [(ngModel)]="this.ordersDTO.addressDTO.room"
             onKeyPress="if(this.value.length==5) return false;">
         </div> 

@@ -4,9 +4,6 @@ import com.munte.disertatiebackend.classes.models.addresses.Addresses;
 import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
 
 public class AddressDTOBuilder {
-
-    private AddressDTO addressDTO = new AddressDTO();
-
     private String country;
 //    private String county;
     private String city;
@@ -17,7 +14,7 @@ public class AddressDTOBuilder {
     private Long room;
 
     public AddressDTOBuilder addCountry(String country) {
-        addressDTO.setCountry(country);
+        this.country= country;
         return this;
     }
 
@@ -27,22 +24,22 @@ public class AddressDTOBuilder {
 //    }
 
     public AddressDTOBuilder addCity(String city) {
-        addressDTO.setCity(city);
+        this.city = city;
         return this;
     }
 
     public AddressDTOBuilder addStreet(String street) {
-        addressDTO.setStreet(street);
+        this.street = street;
         return this;
     }
 
     public AddressDTOBuilder addStreetNumber(Long streetNumber) {
-        addressDTO.setStreetNumber(streetNumber);
+        this.streetNumber = streetNumber;
         return this;
     }
 
     public AddressDTOBuilder addBuilding(String building) {
-        addressDTO.setBuilding(building);
+        this.building = building;
         return this;
     }
 
@@ -52,11 +49,20 @@ public class AddressDTOBuilder {
 //    }
 
     public AddressDTOBuilder addRoom(Long room) {
-        addressDTO.setRoom(room);
+        this.room = room;
         return this;
     }
 
     public AddressDTO build() {
+        AddressDTO addressDTO = new AddressDTO();
+
+        addressDTO.setCountry(this.country);
+        addressDTO.setCity(this.city);
+        addressDTO.setStreet(this.street);
+        addressDTO.setStreetNumber(this.streetNumber);
+        addressDTO.setBuilding(this.building);
+        addressDTO.setRoom(this.room);
+
         return addressDTO;
     }
 }

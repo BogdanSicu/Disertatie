@@ -2,7 +2,7 @@ package com.munte.disertatiebackend.services.orders;
 
 import com.munte.disertatiebackend.classes.dtos.ordersdto.OrdersDTO;
 import com.munte.disertatiebackend.classes.dtos.ordersdto.PizzaOrderDTO;
-import com.munte.disertatiebackend.classes.models.Orders;
+import com.munte.disertatiebackend.classes.models.orders.Orders;
 import com.munte.disertatiebackend.classes.models.addresses.Addresses;
 import com.munte.disertatiebackend.classes.models.addresses.AddressesBuilder;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodsInOrders;
@@ -84,7 +84,7 @@ public class OrdersServiceImplementation implements OrdersService{
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("Yes");
-        message.setTo("sicubogdan18@stud.ase.ro");
+        message.setTo(newOrder.getMail());
         message.setSubject("test");
         message.setText("Your order was registered \n "
         + "You have ordered: \n" + yes);

@@ -3,14 +3,13 @@ package com.munte.disertatiebackend.mappers.food;
 import com.munte.disertatiebackend.classes.dtos.fooddto.FoodSendDTO;
 import com.munte.disertatiebackend.classes.dtos.IngredientsDTO;
 import com.munte.disertatiebackend.classes.dtos.TagsDTO;
-import com.munte.disertatiebackend.classes.models.Food;
+import com.munte.disertatiebackend.classes.models.foods.Food;
 import com.munte.disertatiebackend.classes.models.Ingredients;
 import com.munte.disertatiebackend.classes.models.Tags;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodIngredients;
 import com.munte.disertatiebackend.classes.models.manytomany.FoodTags;
 import com.munte.disertatiebackend.mappers.Mapper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 

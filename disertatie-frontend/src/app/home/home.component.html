@@ -1,7 +1,7 @@
 <app-search></app-search>
 <app-tags></app-tags>
 <app-not-found [visible]="!foods || foods.length <= 0"
-resetLinkText = "Reset Search!">
+resetLinkText = "Reseteaza cautarea!">
 </app-not-found>
 
 <div *ngIf="!isLoaded">
@@ -31,7 +31,7 @@ resetLinkText = "Reset Search!">
                     </div>
                     <div class="price">
                         <span>
-                            {{food.price | currency}}
+                            {{food.price}} lei
                         </span>
                     </div>
                 </div>

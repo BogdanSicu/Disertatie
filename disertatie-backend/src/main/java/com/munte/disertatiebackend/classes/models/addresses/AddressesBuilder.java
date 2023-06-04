@@ -4,7 +4,6 @@ import javax.persistence.Column;
 
 public class AddressesBuilder {
 
-    private Addresses address;
     private String country;
 //    private String county;
     private String city;
@@ -55,15 +54,15 @@ public class AddressesBuilder {
     }
 
     public Addresses build() {
-        this.address = new Addresses();
-        this.address.setCountry(this.country);
+        Addresses address = new Addresses();
+        address.setCountry(this.country);
 //        this.address.setCounty(this.county);
-        this.address.setCity(this.city);
-        this.address.setStreet(this.street);
-        this.address.setStreetNumber(this.streetNumber);
-        this.address.setBuilding(this.building);
+        address.setCity(this.city);
+        address.setStreet(this.street);
+        address.setStreetNumber(this.streetNumber);
+        address.setBuilding(this.building);
 //        this.address.setStaircase(this.staircase);
-        this.address.setRoom(this.room);
+        address.setRoom(this.room);
         return address;
     }
 

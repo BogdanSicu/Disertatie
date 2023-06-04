@@ -55,6 +55,8 @@ export class CartPageComponent implements OnInit {
     console.log(this.ordersDTO);
     this.orderRequest();
     this.ordersDTO =  new OrdersDTO();
+    this.cart = new Cart();
+
   }
 
   orderRequest() {

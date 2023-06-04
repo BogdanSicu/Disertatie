@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NotFoundComponent implements OnInit {
   
   @Input() visible: boolean = false;
-  @Input() notFoundMessage: string = "Nothing Found!";
-  @Input() resetLinkText: string = "Reset";
+  @Input() notFoundMessage: string = "Nu am gasit ceea ce cautai!";
+  @Input() resetLinkText: string = "Reseteaza cautarea";
   @Input() resetLinkRoute: string = "/";
 
   constructor() { }

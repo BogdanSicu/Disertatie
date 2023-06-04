@@ -1,7 +1,7 @@
 package com.munte.disertatiebackend.services.orders;
 
 import com.munte.disertatiebackend.classes.dtos.ordersdto.OrdersDTO;
-import com.munte.disertatiebackend.classes.models.Orders;
+import com.munte.disertatiebackend.classes.models.orders.Orders;
 
 import java.util.List;
 
