@@ -35,6 +35,11 @@ export class CartService {
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
+  removeAllCartItems(): void {
+    this.cart = new Cart();
+    localStorage.setItem("cart", JSON.stringify(this.cart));
+  }
+
   changeQuantity(foodName: string, quantity: number) {
     let cartItem = this.cart.items.find(item => item.food.name === foodName);
 

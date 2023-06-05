@@ -52,11 +52,15 @@ export class CartPageComponent implements OnInit {
     }
 
     this.ordersDTO.totalPrice = this.cart.totalPrice;
+    this.ordersDTO.addressDTO.country = "Romania";
+    this.ordersDTO.addressDTO.city = "Bucuresti";
 
     console.log(this.ordersDTO);
     this.orderRequest();
     this.ordersDTO =  new OrdersDTO();
-    this.cart = new Cart();
+
+    this.cartService.removeAllCartItems();
+    this.setCart();
     alert("Comanda a fost inregistrata");
   }
 
