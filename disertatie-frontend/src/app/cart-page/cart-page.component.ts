@@ -53,7 +53,7 @@ export class CartPageComponent implements OnInit {
 
     this.ordersDTO.totalPrice = this.cart.totalPrice;
     this.ordersDTO.addressDTO.country = "Romania";
-    this.ordersDTO.addressDTO.city = "Bucuresti";
+    // this.ordersDTO.addressDTO.city = "Bucuresti";
 
     console.log(this.ordersDTO);
     this.orderRequest();

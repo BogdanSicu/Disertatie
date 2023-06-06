@@ -86,8 +86,8 @@ public class OrdersServiceImplementation implements OrdersService{
         message.setFrom("Yes");
         message.setTo(newOrder.getMail());
         message.setSubject("test");
-        message.setText("Your order was registered \n "
-        + "You have ordered: \n" + yes);
+        message.setText("Comanda ta a fost inregistrata \n "
+        + "Comanda contine: \n" + yes);
         mailSender.send(message);
 
     }

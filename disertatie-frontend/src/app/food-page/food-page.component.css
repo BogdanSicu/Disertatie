@@ -81,7 +81,7 @@ img {
 }
 
 .details .price::before {
-    content: "Price: ";
+    content: "Pret: ";
     color: darkgrey;
 }
 
